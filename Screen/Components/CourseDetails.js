@@ -13,7 +13,6 @@ const CourseDetails = (props) => {
   const [data, setData] = useState([]);
   const [relatedexam, setrelatedexam] = useState([]);
   const [loading, setLoading] = useState(false);
-  var json ="" ;
   const Coursedetale = ()=>{
     setLoading(true);
     fetch('http://naukrighar.org/api/category-detail/'+props.route.params.id,{
@@ -36,30 +35,9 @@ const CourseDetails = (props) => {
     })
     .catch((error) => console.error(error))
     .finally(() => setLoading(false));
-
-
-
-
-
-
-
   //  return;
   }
-  // const Courserelatedexam = ()=>{
-  //   setLoading(true);
-  //   const url = 'https://naukrighar.org/api/subcategoryapi/'+data.id
-  //   console.log('url===',url)
-  //   console.log("course detele",data.id);
-  //   fetch('https://naukrighar.org/api/subcategoryapi/'+data.id,{
-  //     method: 'GET',
-  //     headers: {"Content-type": "application/json; charset=UTF-8"}
-  //    })
-  //    .then((response) => response.json())
-  //   .then((json) => setrelatedexam(json))
-  //   .catch((error) => console.error(error))
-  //   .finally(() => setLoading(false));
-  //   return;
-  // }
+
   useEffect(()=>{
     Coursedetale();
     // Courserelatedexam();
@@ -70,6 +48,7 @@ const CourseDetails = (props) => {
   return (
       
     <SafeAreaView>
+    
     <ScrollView>
     <Loader loading={loading} />
       <Image  style={styles.tinyLogo}

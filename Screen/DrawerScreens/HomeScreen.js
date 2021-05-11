@@ -13,11 +13,13 @@ const HomeScreens = () => {
         alert('You clicked the button!')  
         return;
      }  
+  const [user , setUser] = useState([]);
   const [data, setData] = useState([]);
   const [coursecategory, setCategory] = useState([]);
-   
+   console.log("valueParsed Home Screen",user);
   const getValuesFromStorage = async () => {
       let valueParsed   =  await AsyncStorage.getItem('token');
+      valueParsed = setUser(valueParsed);
       // console.log("valueParsed",valueParsed);
     }
   const category = () =>{

@@ -6,11 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreens = () => {
 
-
-
+  const [user , setUser] = useState([]);
+  console.log("valueParsed Home Screen",user);
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
-    console.log("valueParsed",valueParsed.fname);
+    valueParsed = setUser(valueParsed);
+    // console.log("valueParsed",valueParsed);
   }
   useEffect(()=>{ 
     getValuesFromStorage();
@@ -19,7 +20,7 @@ const ProfileScreens = () => {
     <SafeAreaView>
     <ScrollView>
        <Image  style={styles.tinyLogo} source={require('../../Image/tcm-logo1.jpg')} />
-       <Text style={styles.textstyle}>Shubham Keshari</Text>
+       <Text style={styles.textstyle}>{user.mobile}</Text>
        <View style={{marginTop:30,paddingLeft: 15,paddingRight: 15}}>
        <TextInput style = {styles.inputStyle}
                underlineColorAndroid = "transparent"

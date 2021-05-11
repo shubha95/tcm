@@ -36,10 +36,11 @@ console.log(data)
           keyExtractor={({id}, index) => id}
           renderItem={({ item }) => (
             <CustomCard 
-            title={item.id}
-              // upcomingb={item.title}
-              imageSource={{url:item.image}}
-              onPressDetails={()=>navigation.navigate('ViewCourseDetale')} />
+              // heding="UPCOMING BATCHES"
+              title={item.id}
+              upcomingb={item.name}
+              imageSource={item.image}
+              onPressDetails={()=>navigation.navigate('ViewSubCourse',{id:item.id})} />
               )}
         />
       </View>
