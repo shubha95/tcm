@@ -18,7 +18,7 @@ const HomeScreens = () => {
    
   const getValuesFromStorage = async () => {
       let valueParsed   =  await AsyncStorage.getItem('token');
-      console.log("valueParsed",valueParsed);
+      // console.log("valueParsed",valueParsed);
     }
   const category = () =>{
     setLoading(true);
@@ -42,10 +42,10 @@ const HomeScreens = () => {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
     }
-  useEffect(()=>{
-      getValuesFromStorage();
+  useEffect(()=>{ 
       Upcamicbach();
       category();
+      getValuesFromStorage();
     },[]);
 
   return (
@@ -78,14 +78,16 @@ const HomeScreens = () => {
         <FlatList
           data={data}
           keyExtractor={({id}, index) => id}
-          renderItem={({ item }) => (
+          renderItem={({ item }) => {
+            return(
             <CustomCard 
               heding="UPCOMING BATCHES"
               title={item.id}
-              upcomingb={item.title}
-              imageSource={{url:item.img_path}}
-              onPressDetails={()=>navigation.navigate('ViewCourseDetale')} />
-              )}
+              upcomingb={item.name}
+              imageSource={item.image}
+              onPressDetails={()=>navigation.navigate('ViewCourseDetale',{id:item.id})} />
+              )
+          }}
         />
       </View>
      <View><Text style={styles.heading}>Coures</Text>
@@ -93,15 +95,18 @@ const HomeScreens = () => {
      <FlatList
           data={coursecategory}
           keyExtractor={({id}, index) => id}
-          renderItem={({ item }) => (
+          renderItem={({ item }) => {
+       `     // console.log("my item",item.img_path,item.title);`
+            return(
             <CustomCard 
  
               // heding="UPCOMING BATCHES"
               title={item.id}
-              upcomingb={item.title}
-              imageSource={{url:item.img_path}}
-              onPressDetails={()=>navigation.navigate('ViewCourseDetale')} />
-              )}
+              upcomingb={item.name}
+              imageSource={item.image}
+              onPressDetails={()=>navigation.navigate('ViewCourseDetale',{id:item.id})} />
+              )
+          }}
         />
      
      </View>

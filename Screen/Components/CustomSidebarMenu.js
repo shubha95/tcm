@@ -1,5 +1,5 @@
 // Import React and Component
-import React from 'react';
+import React ,{useState, useEffect}from 'react';
 import {View, Text, Alert, StyleSheet,Image} from 'react-native';
 
 import {
@@ -11,7 +11,24 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-community/async-storage';
 
+ 
+ 
+
 const CustomSidebarMenu = (props) => {
+
+ 
+  const getValuesFromStorage = async () => {
+    let valueParsed   =  await AsyncStorage.getItem('token');
+    
+    console.log("valueParsed",valueParsed);
+  }
+  useEffect(()=>{
+    getValuesFromStorage();
+  },[]);
+  
+
+  
+
   return (
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>

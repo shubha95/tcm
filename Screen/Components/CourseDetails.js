@@ -1,31 +1,106 @@
 
 
 // Import React and Component
-import React from 'react';
-import {View, Text, SafeAreaView,ScrollView,StyleSheet,Image} from 'react-native';
+import React ,{useState, useEffect} from 'react';
+import {View, Text, SafeAreaView,ScrollView,StyleSheet,Image,FlatList} from 'react-native';
 import CustomSlider from '../DrawerScreens/Slider/CourseSlider';
+import CustomCard from '../Components/CustomCard';
+import { useNavigation } from '@react-navigation/native';
+import Loader from '../Components/Loader';
+import HTMLView from 'react-native-htmlview';
+const CourseDetails = (props) => {
+  const navigation = useNavigation();
+  const [data, setData] = useState([]);
+  const [relatedexam, setrelatedexam] = useState([]);
+  const [loading, setLoading] = useState(false);
+  var json ="" ;
+  const Coursedetale = ()=>{
+    setLoading(true);
+    fetch('http://naukrighar.org/api/category-detail/'+props.route.params.id,{
+      method: 'GET',
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+     })
+     .then((response) =>{return response.json()}  )
+    .then((json) =>{setData(json);
 
 
-const CourseDetails = () => {
+      console.log("my json",json.id);
+      fetch('https://naukrighar.org/api/subcategoryapi/'+json.id,{
+        method: 'GET',
+       headers: {"Content-type": "application/json; charset=UTF-8"}
+      })
+      .then((response) => response.json())
+      .then((json) => {console.log(json);setrelatedexam(json)})
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+    })
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
 
+
+
+
+
+
+
+  //  return;
+  }
+  // const Courserelatedexam = ()=>{
+  //   setLoading(true);
+  //   const url = 'https://naukrighar.org/api/subcategoryapi/'+data.id
+  //   console.log('url===',url)
+  //   console.log("course detele",data.id);
+  //   fetch('https://naukrighar.org/api/subcategoryapi/'+data.id,{
+  //     method: 'GET',
+  //     headers: {"Content-type": "application/json; charset=UTF-8"}
+  //    })
+  //    .then((response) => response.json())
+  //   .then((json) => setrelatedexam(json))
+  //   .catch((error) => console.error(error))
+  //   .finally(() => setLoading(false));
+  //   return;
+  // }
+  useEffect(()=>{
+    Coursedetale();
+    // Courserelatedexam();
+  },[]);
+  // console.log("course detele",data);
   
+  console.log("course related exam detele ",relatedexam);
   return (
       
     <SafeAreaView>
     <ScrollView>
- 
+    <Loader loading={loading} />
       <Image  style={styles.tinyLogo}
-        source={require('../../Image/CAT.png')}
+        source={{uri:data.image}}
       />
-      <Text style={styles.textstyle}>LAW ENTRANCE</Text>
+      <Text style={styles.textstyle}>{data.name}</Text>
      
-      {/* <Text style={{textAlign: 'center',  fontSize:30 , fontWeight: 'bold' ,paddingBottom:10,paddingTop:10}}>Created by: TCM</Text> */}
+          <HTMLView
+              value={data.detail}
+              style={{ marginLeft: 15,marginRight:10,fontSize: 18, fontSize:20,}}
+          />
+        
       
-      <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>The institution you choose to pursue law will play the most crucial role in determining your success rate in the field of law. An ace university/college will provide you with the most holistic environment essential for improving, learning and competing with the best in this field. The curriculum, exchange programmes with foreign universities, the crowd, the opportunities, and the exposure that you will get will be unmatched in a sought-after law college/university. Giving a small example, Gujarat National Law University, every year, organizes an international moot in which law students from all over the world participate including the USA and UK. Imagine how enlightening it will be to compete with those students, to get a chance to talk to them and discuss the law of their country, something that will broaden your horizon and give you an edge over others.</Text>
-      <Text style={styles.subhading}>LAW ENTRANCE RELATED COURSES</Text>
-    <CustomSlider 
-      buttomn="View Course"
-    />
+      {/* <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>{data.detail}</Text> */}
+      <Text style={styles.subhading}>{data.name} RELATED COURSES</Text>
+      <View >
+        <FlatList
+          data={relatedexam}
+          keyExtractor={({id}, index) => id}
+          renderItem={({ item }) => {
+            return(
+            <CustomCard 
+              // heding="UPCOMING BATCHES"
+              title={item.id}
+              upcomingb={item.name}
+              imageSource={item.image}
+              onPressDetails={()=>navigation.navigate('ViewSubCourse',{id:item.id})} />
+              )
+          }}
+        />
+      </View>
      
     </ScrollView>
     </SafeAreaView>

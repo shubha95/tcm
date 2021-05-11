@@ -18,6 +18,7 @@ import PurchaseHistory from './DrawerScreens/PurchaseHistory';
 import Invoice from './DrawerScreens/invoice';
 import LiveRoom from './LiveRoom';
 import JoinMeet from './JoinMeet';
+import SubCourse from './DrawerScreens/SubCourse';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -87,10 +88,10 @@ const homeScreenStack = ({navigation}) => {
         }}
       />
       <Stack.Screen
-        name="ProfileScreens"
-        component={ProfileScreens}
+        name="ViewSubCourse"
+        component={SubCourse}
         options={{
-          title: 'Profile', //Set Header Title
+          title: 'Related Course Detale', //Set Header Title
           headerStyle: {
             backgroundColor: '#307ecc', //Set Header color
           },
@@ -100,6 +101,7 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       />
+
       <Stack.Screen
         name="PurchaseHistory"
         component={PurchaseHistory}
@@ -128,6 +130,7 @@ const homeScreenStack = ({navigation}) => {
           },
         }}s
       />
+
     </Stack.Navigator>
   );
 };
@@ -224,7 +227,32 @@ const LiveClassesScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-
+const ProfileScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="ProfileScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreens}
+        options={{
+          title: 'Profile', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 
 const DrawerNavigatorRoutes = (props) => {
@@ -239,13 +267,18 @@ const DrawerNavigatorRoutes = (props) => {
         },
       }}
       screenOptions={{headerShown: false}}
-      drawerContent={CustomSidebarMenu}>
+      drawerContent={(props)=> <CustomSidebarMenu {...props} />}>
       <Drawer.Screen
         name="homeScreenStack"
-        options={{drawerLabel: 'Dashboard'}}
+        options={{drawerLabel: 'Home'}}
         component={homeScreenStack}
       />
-          <Drawer.Screen
+      <Drawer.Screen
+        name="ProfileScreenStack"
+        options={{drawerLabel: 'Profile'}}
+        component={ProfileScreenStack}
+      />
+      <Drawer.Screen
         name="CourseScreenStack"
         options={{drawerLabel: 'Courses'}}
         component={CourseScreenStack}

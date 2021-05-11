@@ -3,17 +3,20 @@ import {View , Text, Image ,TouchableOpacity,StyleSheet}  from 'react-native';
 import { Card } from 'react-native-elements';
 
 const CustomCard = (props) => {
+  let image = props.imageSource !== null ? {uri:props.imageSource} : require('../../Image/tcm-logo.png');
     return( 
         <Card title={props.title}>
         {/*react-native-elements Card*/}
         <View >
         <Text style={styles.heding}>{props.heding}</Text>
               <Image
-                source={props.imageSource}
+              //  resizeMode="contain"
+                source={image}
                   style={{
-                  width: '100%',
-                  height: 100,
+                  width: 345,
+                  height: 200,
                   justifyContent: 'center',
+                  marginRight: 45,
                 }}
               />
               <Text style={styles.heding} >{props.upcomingb}</Text>

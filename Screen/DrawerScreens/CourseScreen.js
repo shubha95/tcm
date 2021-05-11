@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import {View, Text,FlatList, SafeAreaView,StyleSheet,ScrollView,Image,TouchableOpacity} from 'react-native';
 import { Card } from 'react-native-elements';
 import CustomCard from '../Components/CustomCard';
-
+import Loader from '../Components/Loader';
 import { useNavigation } from '@react-navigation/native';
 
 const CourseScreen = () => {
   const navigation = useNavigation();
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 console.log(data)
   useEffect(() => {
@@ -23,11 +23,12 @@ console.log(data)
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView>
+    <Loader loading={loading} />
        <View style={styles.container}>
 
        <View>
-    {isLoading ? <Text>Loading...</Text> : 
-    ( <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
+   
+    <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
         {/* <Text style={{ fontSize: 18, color: 'green', textAlign: 'center'}}>{data.id}</Text>
         <Text style={{ fontSize: 14, color: 'green', textAlign: 'center', paddingBottom: 10}}>Articles:</Text> */}
         <FlatList
@@ -36,13 +37,13 @@ console.log(data)
           renderItem={({ item }) => (
             <CustomCard 
             title={item.id}
-              upcomingb={item.title}
-              imageSource={{url:item.img_path}}
+              // upcomingb={item.title}
+              imageSource={{url:item.image}}
               onPressDetails={()=>navigation.navigate('ViewCourseDetale')} />
               )}
         />
       </View>
-    )}
+    
   </View>
  
         </View>

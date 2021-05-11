@@ -1,11 +1,20 @@
 // Import React and Component
 import React ,{useState, useEffect} from 'react';
 import {View, Text, SafeAreaView,StyleSheet, Image,TextInput} from 'react-native';
-import Carousel from 'react-native-banner-carousel';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreens = () => {
 
+
+
+  const getValuesFromStorage = async () => {
+    let valueParsed   =  await AsyncStorage.getItem('token');
+    console.log("valueParsed",valueParsed.fname);
+  }
+  useEffect(()=>{ 
+    getValuesFromStorage();
+  },[]);
   return (
     <SafeAreaView>
     <ScrollView>
