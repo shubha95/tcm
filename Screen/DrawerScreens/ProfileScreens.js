@@ -3,15 +3,25 @@ import React ,{useState, useEffect} from 'react';
 import {View, Text, SafeAreaView,StyleSheet, Image,TextInput} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loader from '../Components/Loader';
 
-const ProfileScreens = () => {
-
-  const [user , setUser] = useState([]);
-  console.log("valueParsed Home Screen",user);
+const ProfileScreens = () => { 
+  const [loading, setLoading] = useState(false);
+  const [userdetale , setuserdetale] = useState([]);
+  console.log("User Detele Profile",userdetale);
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
-    valueParsed = setUser(valueParsed);
-    // console.log("valueParsed",valueParsed);
+    // valueParsed = setUser(valueParsed);
+    console.log("Url",'https://naukrighar.org/api/subcategoryapi/'+valueParsed);
+
+    fetch('http://naukrighar.org/api/myprofile/'+valueParsed,{
+      method: 'GET',
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then((response) => response.json())
+    .then((json) => setuserdetale(json))
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
   }
   useEffect(()=>{ 
     getValuesFromStorage();
@@ -19,39 +29,28 @@ const ProfileScreens = () => {
   return (
     <SafeAreaView>
     <ScrollView>
-       <Image  style={styles.tinyLogo} source={require('../../Image/tcm-logo1.jpg')} />
-       <Text style={styles.textstyle}>{user.mobile}</Text>
+    <Loader loading={loading} />
+       <Image  style={styles.tinyLogo} source={require('../../Image/userProfile.png')} />
+       <Text style={styles.textstyle}>{userdetale.name}</Text>
        <View style={{marginTop:30,paddingLeft: 15,paddingRight: 15}}>
        <TextInput style = {styles.inputStyle}
                underlineColorAndroid = "transparent"
-               placeholder = "First Name"
+               placeholder = {userdetale.name}
                placeholderTextColor = "#000000"
                autoCapitalize = "none"
              />
         <TextInput style = {styles.inputStyle}
                underlineColorAndroid = "transparent"
-               placeholder = "Last Name"
+               placeholder = {userdetale.email}
                placeholderTextColor = "#000000"
                autoCapitalize = "none"
              />
         <TextInput style = {styles.inputStyle}
                underlineColorAndroid = "transparent"
-               placeholder = "Email"
+               placeholder = {userdetale.mobile}
                placeholderTextColor = "#000000"
                autoCapitalize = "none"
              />
-        <TextInput style = {styles.inputStyle}
-               underlineColorAndroid = "transparent"
-               placeholder = "Mobile"
-               placeholderTextColor = "#000000"
-               autoCapitalize = "none"
-             />
-         <TextInput style = {styles.inputStyle}
-               underlineColorAndroid = "transparent"
-               placeholder = "Date of Birth"
-               placeholderTextColor = "#000000"
-               autoCapitalize = "none"
-             />   
         </View>
      
     </ScrollView>

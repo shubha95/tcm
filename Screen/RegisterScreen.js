@@ -194,6 +194,23 @@ const RegisterScreen = ({navigation}) => {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
+              onChangeText={(userMobile) => setuserMobile(userMobile)}
+              underlineColorAndroid="#f000"
+              placeholder="Mobile No."
+              placeholderTextColor="#FFFFFF"
+              keyboardType="numeric"
+              ref={ageInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                addressInputRef.current &&
+                addressInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
               onChangeText={(UserPassword) =>
                 setUserPassword(UserPassword)
               }
@@ -217,7 +234,7 @@ const RegisterScreen = ({navigation}) => {
                 setuserRepassword(userRepassword)
               }
               underlineColorAndroid="#f000"
-              placeholder="Enter Re Password"
+              placeholder="Re Enter password"
               placeholderTextColor="#FFFFFF"
               ref={passwordInputRef}
               returnKeyType="next"
@@ -228,25 +245,7 @@ const RegisterScreen = ({navigation}) => {
               }
               blurOnSubmit={false}
             />
-          </View>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              onChangeText={(userMobile) => setuserMobile(userMobile)}
-              underlineColorAndroid="#f000"
-              placeholder="Mobile No."
-              placeholderTextColor="#FFFFFF"
-              keyboardType="numeric"
-              ref={ageInputRef}
-              returnKeyType="next"
-              onSubmitEditing={() =>
-                addressInputRef.current &&
-                addressInputRef.current.focus()
-              }
-              blurOnSubmit={false}
-            />
-          </View>
-         
+          </View>         
           {errortext != '' ? (
             <Text style={styles.errorTextStyle}>
               {errortext}
@@ -258,6 +257,11 @@ const RegisterScreen = ({navigation}) => {
             onPress={handleSubmitButton}>
             <Text style={styles.buttonTextStyle}>REGISTER</Text>
           </TouchableOpacity>
+          <Text
+              style={styles.registerTextStyle}
+              onPress={() => navigation.navigate('LoginScreen')}>
+              Already Register ? Please Login
+            </Text>
         </KeyboardAvoidingView>
       </ScrollView>
     </View>
@@ -311,6 +315,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     padding: 30,
+  },
+  registerTextStyle: {
+    color: '#FFFFFF',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 14,
+    alignSelf: 'center',
+    padding: 10,
   },
 });
 

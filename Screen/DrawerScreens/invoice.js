@@ -8,7 +8,7 @@ const CustomCard = ( ) => {
         <ScrollView >
         <Card  >
         {/*react-native-elements Card*/}
-        <View >
+            <View>
               <Image
                 source={require('../../Image/tcm-logo.png')}
                   style={{

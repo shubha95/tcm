@@ -21,9 +21,7 @@ const CourseDetails = (props) => {
      })
      .then((response) =>{return response.json()}  )
     .then((json) =>{setData(json);
-
-
-      console.log("my json",json.id);
+      console.log("my Course Id === ",json.id);
       fetch('https://naukrighar.org/api/subcategoryapi/'+json.id,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -58,7 +56,7 @@ const CourseDetails = (props) => {
      
           <HTMLView
               value={data.detail}
-              style={{ marginLeft: 15,marginRight:10,fontSize: 18, fontSize:20,}}
+              style={{ marginLeft: 15,marginRight:10,fontSize:20,}}
           />
         
       

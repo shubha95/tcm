@@ -14,11 +14,13 @@ import AboutScreens from './DrawerScreens/AboutScreens';
 import ProfileScreens from './DrawerScreens/ProfileScreens'; 
 import CourseScreen from './DrawerScreens/CourseScreen';
 import CourseDetails from './Components/CourseDetails';
+import BatcheDetail from './Components/BatcheDetail';
 import PurchaseHistory from './DrawerScreens/PurchaseHistory';
 import Invoice from './DrawerScreens/invoice';
 import LiveRoom from './LiveRoom';
 import JoinMeet from './JoinMeet';
 import SubCourse from './DrawerScreens/SubCourse';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -30,7 +32,7 @@ const homeScreenStack = ({navigation}) => {
         name="HomeScreen"
         component={HomeScreen}
         options={{
-          title: '', //Set Header Title
+          title: 'TCM Education', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -101,8 +103,22 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       />
-
       <Stack.Screen
+        name="ViewUpcomingBatch"
+        component={BatcheDetail}
+        options={{
+          title: 'Batche Detail', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+
+      {/* <Stack.Screen
         name="PurchaseHistory"
         component={PurchaseHistory}
         options={{
@@ -115,8 +131,8 @@ const homeScreenStack = ({navigation}) => {
             fontWeight: 'bold', //Set Header text style
           },
         }}
-      />
-     <Stack.Screen
+      /> */}
+     {/* <Stack.Screen
         name="Invoice"
         component={Invoice}
         options={{
@@ -129,7 +145,7 @@ const homeScreenStack = ({navigation}) => {
             fontWeight: 'bold', //Set Header text style
           },
         }}s
-      />
+      /> */}
 
     </Stack.Navigator>
   );
@@ -207,7 +223,7 @@ const LiveClassesScreenStack = ({navigation}) => {
         name="LiveRoom"
         component={LiveRoom}
         options={{
-          title: 'Live Room', //Set Header Title
+          title: 'Live Class ', //Set Header Title
           // headerStyle: {
           //   backgroundColor: '#307ecc', //Set Header color
           // },

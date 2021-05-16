@@ -2,12 +2,13 @@
 
 // Import React and Component
 import React ,{useState, useEffect} from 'react';
-import {View, Text, SafeAreaView,ScrollView,StyleSheet,Image,FlatList} from 'react-native';
+import {View, Text, SafeAreaView,ScrollView,StyleSheet,Image,TouchableOpacity,FlatList} from 'react-native';
 import CustomSlider from '../DrawerScreens/Slider/CourseSlider';
 import CustomCard from '../Components/CustomCard';
 import { useNavigation } from '@react-navigation/native';
 import Loader from '../Components/Loader';
 import HTMLView from 'react-native-htmlview';
+import { Card } from 'react-native-elements';
 const SubCourse = (props) => {
   console.log("Course Detele id == ",props.route.params.id);
   const navigation = useNavigation();
@@ -21,12 +22,15 @@ const SubCourse = (props) => {
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
      .then((response) => {return response.json()}  )
-    .then((json) => {setData(json);
+     .then((json) => {setData(json);
+      setLoading(true);
+      // console.log("my Sub_Course Id === ",json.id);
+      // console.log("Url ==", 'http://naukrighar.org/api/related-baches/'+json.id);
       fetch('http://naukrighar.org/api/related-baches/'+json.id,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
       })
-      .then((response) => response.json())
+      .then((response) =>{return  response.json() })
       .then((json) => {console.log(json);setrelatedbach(json)})
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -36,15 +40,18 @@ const SubCourse = (props) => {
     .finally(() => setLoading(false));
   }
  
+
   useEffect(()=>{
  
     SubCoursedetales();
   },[]);
+  
  console.log("Course Detae id ==", SubCourseDetele);
  console.log("Course related Detae id ==", relatedbach);
+ let edited = relatedbach.success;
  
+ console.log("Course related Detae id  edited==", edited);
   return (
-      
     <SafeAreaView>
     <ScrollView>
     <Loader loading={loading} />
@@ -56,25 +63,29 @@ const SubCourse = (props) => {
               value={SubCourseDetele.detail}
               style={{ marginLeft: 15,marginRight:10, fontSize:20,}}
           />
-      {/* <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>{SubCourseDetele.detail}</Text> */}
-      <Text style={styles.subhading}>{SubCourseDetele.name} Up Comming BATCHES</Text>
+      <View>
+     
+
+      {edited ? (
+      <Text style={{ marginLeft: 15,marginRight:10, fontSize:20}}>{SubCourseDetele.name} Related baches</Text>,
+        <Card>
+  <Card.Title>{relatedbach.data.name}</Card.Title>
+   
+  <Card.Image source={{uri:relatedbach.data.image}}>
+    <Text> </Text>
+   
+  </Card.Image>
+  <TouchableOpacity
+            onPressDetails={()=>navigation.navigate('ViewUpcomingBatch',{id:relatedbach.data.id})} 
+            style={styles.buttonStyle}
+            >
+            <Text style={styles.buttonTextStyle}>View Detail</Text>
+          </TouchableOpacity>
+</Card>
+) : (<Text></Text> )}
  
-      <View >
-        <FlatList
-          data={relatedbach}
-          keyExtractor={({id}, index) => id}
-          renderItem={({ item }) => {
-            return(
-            <CustomCard 
-              // heding="UPCOMING BATCHES"
-              title={item.id}
-              upcomingb={item.name}
-              imageSource={item.image}
-              onPressDetails={()=>navigation.navigate('ViewSubCourse',{id:item.id})} />
-              )
-          }}
-        />
-      </View>
+ 
+    </View>
 
 
     </ScrollView>
@@ -109,6 +120,23 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop:10,
      marginLeft: 50, 
+    },
+    buttonStyle: {
+      backgroundColor: '#307ecc',
+      borderWidth: 0,
+      color: '#FFFFFF',
+      borderColor: '#307ecc',
+      height: 40,
+      alignItems: 'center',
+      borderRadius: 30,
+      marginLeft: 35,
+      marginRight: 35,
+      marginTop:10,
+    },
+    buttonTextStyle: {
+      color: '#FFFFFF',
+      paddingVertical: 10,
+      fontSize: 16,
     },
   
   });

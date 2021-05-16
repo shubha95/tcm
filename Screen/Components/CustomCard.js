@@ -25,7 +25,7 @@ const CustomCard = (props) => {
             onPress={()=>props.onPressDetails()}
             style={styles.buttonStyle}
             >
-            <Text style={styles.buttonTextStyle}>View Detale</Text>
+            <Text style={styles.buttonTextStyle}>View Detail</Text>
           </TouchableOpacity>
             </View>
    
@@ -38,7 +38,9 @@ const CustomCard = (props) => {
 const styles = StyleSheet.create({
   heding:{    fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',},
+    textAlign: 'center',
+    marginTop:10,
+  },
     paragraph: {
         margin: 24,
         fontSize: 18,
@@ -56,6 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginLeft: 35,
         marginRight: 35,
+        marginTop:10,
       },
       buttonTextStyle: {
         color: '#FFFFFF',

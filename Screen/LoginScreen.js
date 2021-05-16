@@ -49,17 +49,20 @@ const LoginScreen = ({navigation}) => {
         //Hide Loader
         setLoading(false);
         console.log("response data",responseJson);
-        console.log("responseJson.success",responseJson.success);
+        console.log("responseJson.status",responseJson.Status);
         // console.log(responseJson.token);
-        if(responseJson.success=='true'){
-          await AsyncStorage.setItem('token',JSON.stringify(responseJson) );
+
+        // {responseJson.Status ? (console.log("responseJson.true",responseJson.Status)) : (console.log("responseJson.Folse",responseJson.Status) )}
+
+
+        if(responseJson.Status=='true'){
+          await AsyncStorage.setItem('token',JSON.stringify(responseJson.token.id) );
           const value = await AsyncStorage.getItem('token');
           console.log("retaurn save api",value);
           // alert('You clicked the button!')  
           navigation.navigate('DrawerNavigationRoutes');
         }
         else{
-          console.log("wrong Email Id Or pasword",responseJson.Unauthorised)
           alert('Please Cheak your Email Id Or Password');
         }
         
@@ -166,7 +169,7 @@ const LoginScreen = ({navigation}) => {
             <Text
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('RegisterScreen')}>
-              New Here ? Register
+              No Account ? Register here
             </Text>
           </KeyboardAvoidingView>
         </View>
@@ -192,10 +195,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#7DE24E',
+    backgroundColor: '#cf242cd6',
     borderWidth: 0,
     color: '#FFFFFF',
-    borderColor: '#7DE24E',
+    borderColor: '#cf242cd6',
     height: 40,
     alignItems: 'center',
     borderRadius: 30,

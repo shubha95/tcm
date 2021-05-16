@@ -59,35 +59,35 @@ const HomeScreens = () => {
          source={require('../../Image/banner2.png')}
       />
       </View>
-                 <View style={styles.buttonContainer}>  
+                 {/* <View style={styles.buttonContainer}>  
                     <Button  
                         onPress={onPressButton}  
                         style={styles.buttonStyle}
                         title="Register For Off line Classes."  
           
                     />  
-                </View> 
-                <View style={styles.buttonContainer}>  
+                </View>  */}
+                {/* <View style={styles.buttonContainer}>  
                     <Button
                         onPress={onPressButton}  
                         style={styles.buttonStyle}
                         title="Register For Online Classes."  
                         
                     />  
-                 </View> 
+                 </View>  */}
              
-     <View >
+     <View ><Text style={styles.heading}>UPCOMING BATCHES</Text>
         <FlatList
           data={data}
           keyExtractor={({id}, index) => id}
           renderItem={({ item }) => {
             return(
             <CustomCard 
-              heding="UPCOMING BATCHES"
+              // heding="UPCOMING BATCHES"
               title={item.id}
               upcomingb={item.name}
               imageSource={item.image}
-              onPressDetails={()=>navigation.navigate('ViewCourseDetale',{id:item.id})} />
+              onPressDetails={()=>navigation.navigate('ViewUpcomingBatch',{id:item.id})} />
               )
           }}
         />
@@ -165,7 +165,7 @@ buttonStyle: {
   marginRight: 35,
 },
 heading:{
-  
+  marginTop:10,
   fontSize: 22,
   fontWeight: 'bold',
   paddingLeft:20,
