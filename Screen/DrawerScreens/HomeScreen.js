@@ -112,11 +112,7 @@ const HomeScreens = () => {
         />
      
      </View>
-                  
-
-                
-    
-                
+                           
     </ScrollView>
   </SafeAreaView>
 )

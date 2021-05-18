@@ -8,7 +8,7 @@ const CustomCard = (props) => {
         <Card title={props.title}>
         {/*react-native-elements Card*/}
         <View >
-        <Text style={styles.heding}>{props.heding}</Text>
+        {/* <Text style={styles.heding}>{props.heding}</Text> */}
               <Image
               //  resizeMode="contain"
                 source={image}
@@ -36,10 +36,12 @@ const CustomCard = (props) => {
 
 
 const styles = StyleSheet.create({
-  heding:{    fontSize: 18,
+  heding:{   
+     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop:10,
+    marginTop:20,
+    marginBottom:20,
   },
     paragraph: {
         margin: 24,

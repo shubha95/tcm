@@ -132,20 +132,7 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       /> */}
-     {/* <Stack.Screen
-        name="Invoice"
-        component={Invoice}
-        options={{
-          title: 'Invoice Detail', //Set Header Title
-          headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
-          },
-          headerTintColor: '#fff', //Set Header text color
-          headerTitleStyle: {
-            fontWeight: 'bold', //Set Header text style
-          },
-        }}s
-      /> */}
+
 
     </Stack.Navigator>
   );
@@ -172,6 +159,14 @@ const CourseScreenStack = ({navigation}) => {
           options={{
             title: 'Course', //Set Header Title
           }}/>
+        <Stack.Screen
+          name="ViewSubCourse"
+          component={SubCourse}
+          options={{
+            title: 'Related Course Detale', //Set Header Title
+          }}   
+          />
+  
     </Stack.Navigator>
   );
 };
@@ -179,7 +174,7 @@ const CourseScreenStack = ({navigation}) => {
 const aboutScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
-      initialRouteName="aboutScreen"
+      initialRouteName="AboutScreen"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerHeader navigationProps={navigation} />
@@ -197,11 +192,53 @@ const aboutScreenStack = ({navigation}) => {
         component={AboutScreens}
         options={{
           title: 'About', //Set Header Title
+            headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
         }}
       />
     </Stack.Navigator>
   );
 };
+
+const PurchaseScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="PurcaseScreens"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+ 
+      <Stack.Screen
+           name="PurcaseScreens"
+           component={PurchaseHistory}
+           options={{
+          title: 'Purchase History', //Set Header Title
+          }}/>
+        <Stack.Screen
+          name="Invoicedetail"
+          component={Invoice}
+          options={({ route }) => ({ title: 'Invoice Detail' })}
+ 
+          />
+  
+    </Stack.Navigator>
+  );
+};
+ 
 const LiveClassesScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
@@ -308,6 +345,11 @@ const DrawerNavigatorRoutes = (props) => {
         name="Liveroom"
         options={{drawerLabel: 'Live Classes'}}
         component={LiveClassesScreenStack}
+      />
+    <Drawer.Screen
+        name="PurchaseScreenStack"
+        options={{drawerLabel: 'Purchase History'}}
+        component={PurchaseScreenStack}
       />
     </Drawer.Navigator>
   );

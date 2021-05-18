@@ -20,12 +20,10 @@ const CustomPurchasHistory = (props) => {
               />
             </View>
             {/*react-native-elements Card*/}
-            <Text style={styles.paragraph}>{props.type}</Text>
+            <Text style={styles.paragraph}>Name - {props.name}</Text>
             <Text style={styles.paragraph}>Enroll On - {props.enroll}</Text>
-            <Text style={styles.paragraph}>Enroll End - {props.enrollen}</Text>
             <Text style={styles.paragraph}>Payment Mode - {props.Paymentmathod }</Text>
             <Text style={styles.paragraph}>Total Price - {props.totalprice }</Text>
-            <Text style={styles.paragraph}>Payment Statuss - {props.paystatus }</Text>
             <TouchableOpacity
               style={styles.buttonStyle}
               onPress={()=>props.onPressDetails()}

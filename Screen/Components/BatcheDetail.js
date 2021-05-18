@@ -22,9 +22,12 @@ const SubCourse = (props) => {
       .then((json) => setBaches(json))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
+    
   }
- 
-
+ if(BachesDetaile.detail!= undefined){
+  var details = `<div>${BachesDetaile.detail.replace(/(\r\n|\n|\r)/gm, "")}</div>`;
+ }
+const text = 
   useEffect(()=>{
  
     Bachdetails();
@@ -39,8 +42,9 @@ const SubCourse = (props) => {
       />
       <Text style={styles.textstyle}>{BachesDetaile.name}</Text>
       <HTMLView
-              value={BachesDetaile.detail}
-              style={{ marginLeft: 15,marginRight:10, fontSize:20,}}
+             value={details}
+              // value={BachesDetaile.detail} 
+              style={{ marginLeft: 15,marginRight:10, marginTop:10,fontSize:22}}
           />
       <View>
      
@@ -66,6 +70,7 @@ const styles = StyleSheet.create({
        textAlign: 'center', 
        fontSize:30 , 
        fontWeight: 'bold',
+       marginTop:10,
     
     },
     subhading:{
@@ -78,11 +83,11 @@ const styles = StyleSheet.create({
    
    },
     tinyLogo: {
-        height:300,
-        width:300,
+      width: 345,
+      height: 230,
       justifyContent: 'center',
       marginTop:10,
-     marginLeft: 50, 
+     marginLeft: 20, 
     },
   
   });

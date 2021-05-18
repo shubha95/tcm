@@ -56,7 +56,7 @@ const CourseDetails = (props) => {
      
           <HTMLView
               value={data.detail}
-              style={{ marginLeft: 15,marginRight:10,fontSize:20,}}
+              style={{ marginLeft: 15,marginRight:10,  fontWeight: '300',}}
           />
         
       
@@ -106,11 +106,11 @@ const styles = StyleSheet.create({
    
    },
     tinyLogo: {
-        height:300,
-        width:300,
+      width: 345,
+      height: 230,
       justifyContent: 'center',
       marginTop:10,
-     marginLeft: 50, 
+     marginLeft: 20, 
     },
   
   });

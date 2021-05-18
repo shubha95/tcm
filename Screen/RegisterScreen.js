@@ -77,22 +77,8 @@ const RegisterScreen = ({navigation}) => {
     .then(async(responseJson) => {
       //Hide Loader
       setLoading(false);
-      // if (responseJson.status === 'success') {
-      //
-      //   console.log(
-      //     'Registration Successful. Please Login to proceed'
-      //   );
-      // } else {
-      //   setErrortext(responseJson.msg);
-      // }
-      
-      console.log("response data",responseJson);
-      console.log("responseJson.success",responseJson.success);
       if(responseJson.success=="true"){
         console.log(responseJson.data.token);
-        await AsyncStorage.setItem('token',JSON.stringify(responseJson) );
-        const value = await AsyncStorage.getItem('token');
-        console.log("retaurn save api",value);
         setIsRegistraionSuccess(true);
         // navigation.navigate('DrawerNavigationRoutes');
       }

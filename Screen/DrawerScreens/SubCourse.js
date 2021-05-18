@@ -40,7 +40,9 @@ const SubCourse = (props) => {
     .finally(() => setLoading(false));
   }
  
-
+  if(SubCourseDetele.detail != undefined){
+    var details = `<div>${SubCourseDetele.detail.replace(/(\r\n|\n|\r)/gm, "")}</div>`;
+   }
   useEffect(()=>{
  
     SubCoursedetales();
@@ -60,7 +62,8 @@ const SubCourse = (props) => {
       />
       <Text style={styles.textstyle}>{SubCourseDetele.name}</Text>
       <HTMLView
-              value={SubCourseDetele.detail}
+     
+              value= {details} 
               style={{ marginLeft: 15,marginRight:10, fontSize:20,}}
           />
       <View>
@@ -68,10 +71,17 @@ const SubCourse = (props) => {
 
       {edited ? (
       <Text style={{ marginLeft: 15,marginRight:10, fontSize:20}}>{SubCourseDetele.name} Related baches</Text>,
-        <Card>
-  <Card.Title>{relatedbach.data.name}</Card.Title>
+        <Card style={{marginBottom:50}}>
+  {/* <Card.Title>{relatedbach.data.name}</Card.Title> */}
    
-  <Card.Image source={{uri:relatedbach.data.image}}>
+  <Card.Image  source={{uri:relatedbach.data.image}}
+          style={{
+                  width: 345,
+                  height: 200,
+                  justifyContent: 'center',
+                  marginRight: 45,
+                }}
+  >
     <Text> </Text>
    
   </Card.Image>
@@ -103,6 +113,7 @@ const styles = StyleSheet.create({
        textAlign: 'center', 
        fontSize:30 , 
        fontWeight: 'bold',
+       marginTop:10,
     
     },
     subhading:{
@@ -115,11 +126,11 @@ const styles = StyleSheet.create({
    
    },
     tinyLogo: {
-        height:300,
-        width:300,
+      width: 345,
+      height: 200,
       justifyContent: 'center',
       marginTop:10,
-     marginLeft: 50, 
+     marginLeft: 20, 
     },
     buttonStyle: {
       backgroundColor: '#307ecc',
