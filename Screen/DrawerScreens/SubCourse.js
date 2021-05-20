@@ -86,7 +86,7 @@ const SubCourse = (props) => {
    
   </Card.Image>
   <TouchableOpacity
-            onPressDetails={()=>navigation.navigate('ViewUpcomingBatch',{id:relatedbach.data.id})} 
+            onPress={()=>navigation.navigate('ViewUpcomingBatch',{id:relatedbach.data.id})} 
             style={styles.buttonStyle}
             >
             <Text style={styles.buttonTextStyle}>View Detail</Text>

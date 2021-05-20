@@ -1,6 +1,6 @@
 // Import React and Component
 import React ,{useState, useEffect}from 'react';
-import {View, Text, Alert, StyleSheet,Image} from 'react-native';
+import {View, Text, Alert,styles, StyleSheet,Image,TouchableOpacity} from 'react-native';
 
 import {
   DrawerContentScrollView,
@@ -11,23 +11,54 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-community/async-storage';
 
- 
+import { useNavigation } from '@react-navigation/native';
  
 
 const CustomSidebarMenu = (props) => {
 
- 
+  const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [userdetale , setuserdetale] = useState([]);
+  console.log("User Detele Profile",userdetale);
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
-    
-    console.log("valueParsed",valueParsed);
+    // valueParsed = setUser(valueParsed);
+    console.log("Url",'http://naukrighar.org/api/myprofile/'+valueParsed);
+
+    fetch('http://naukrighar.org/api/myprofile/'+valueParsed,{
+      method: 'GET',
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then((response) => response.json())
+    .then((json) => setuserdetale(json))
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
   }
-  useEffect(()=>{
+  useEffect(()=>{ 
     getValuesFromStorage();
   },[]);
-  
-
-  
+ const logouts = ()=>{
+  Alert.alert(
+    'Logout',
+    'Are you sure? You want to logout?',
+    [
+      {
+        text: 'Cancel',
+        onPress: () => {
+          return null;
+        },
+      },
+      {
+        text: 'Confirm',
+        onPress: () => {
+          AsyncStorage.clear();
+          props.navigation.replace('Auth');
+        },
+      },
+    ],
+    {cancelable: false},
+  );
+ }
 
   return (
     <View style={stylesSidebar.sideMenuContainer}>
@@ -40,13 +71,61 @@ const CustomSidebarMenu = (props) => {
             />
         </View>
         <Text style={stylesSidebar.profileHeaderText}>
-          Shubham Kehshari
+         {userdetale.name}
         </Text>
       </View>
       <View style={stylesSidebar.profileHeaderLine} />
 
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
+         <TouchableOpacity
+            onPress={()=>navigation.navigate('homeScreenStack')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('CourseScreenStack')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>{
+              navigation.reset({
+                routes: [{ name: 'PurchaseScreenStack' }]
+              });
+              //navigation.navigate('PurchaseScreenStack')
+              }}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('Liveroom')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('ProfileScreenStack')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
+          </TouchableOpacity>
+         <TouchableOpacity
+            onPress={()=>navigation.navigate('aboutScreenStack')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+
+
+            onPress={()=>logouts('')}  >
+            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
+          </TouchableOpacity>
+
+
+
+
+        {/* <DrawerItemList {...props} />
         <DrawerItem
           label={({color}) => 
             <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100"}}>
@@ -76,7 +155,7 @@ const CustomSidebarMenu = (props) => {
               {cancelable: false},
             );
           }}
-        />
+        /> */}
       </DrawerContentScrollView>
     </View>
   );
@@ -119,5 +198,22 @@ const stylesSidebar = StyleSheet.create({
     marginHorizontal: 20,
     backgroundColor: '#e2e2e2',
     marginTop: 15,
+  },
+  buttonTextStyle: {
+    color: '#FFFFFF',
+    paddingVertical: 10,
+    fontSize: 16,
+  },     
+    buttonStyle: {
+    backgroundColor: '#307ecc',
+    borderWidth: 0,
+    color: '#FFFFFF',
+    borderColor: '#307ecc',
+    height: 40,
+    alignItems: 'center',
+    borderRadius: 30,
+    marginLeft: 35,
+    marginRight: 35,
+    marginTop:10,
   },
 });

@@ -56,62 +56,61 @@
 31-->C:\tcm\android\app\src\main\AndroidManifest.xml:15:7-39
 32        android:roundIcon="@mipmap/ic_launcher_round"
 32-->C:\tcm\android\app\src\main\AndroidManifest.xml:17:7-52
-33        android:testOnly="true"
-34        android:theme="@style/AppTheme"
-34-->C:\tcm\android\app\src\main\AndroidManifest.xml:19:7-38
-35        android:usesCleartextTraffic="true" >
-35-->C:\tcm\android\app\src\debug\AndroidManifest.xml:7:18-53
-36        <activity
-36-->C:\tcm\android\app\src\main\AndroidManifest.xml:20:7-30:18
-37            android:name="com.tcm.MainActivity"
-37-->C:\tcm\android\app\src\main\AndroidManifest.xml:21:9-37
-38            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-38-->C:\tcm\android\app\src\main\AndroidManifest.xml:23:9-86
-39            android:label="@string/app_name"
-39-->C:\tcm\android\app\src\main\AndroidManifest.xml:22:9-41
-40            android:launchMode="singleTask"
-40-->C:\tcm\android\app\src\main\AndroidManifest.xml:24:9-40
-41            android:windowSoftInputMode="adjustResize" >
-41-->C:\tcm\android\app\src\main\AndroidManifest.xml:25:9-51
-42            <intent-filter>
-42-->C:\tcm\android\app\src\main\AndroidManifest.xml:26:9-29:25
-43                <action android:name="android.intent.action.MAIN" />
-43-->C:\tcm\android\app\src\main\AndroidManifest.xml:27:13-65
-43-->C:\tcm\android\app\src\main\AndroidManifest.xml:27:21-62
-44
-45                <category android:name="android.intent.category.LAUNCHER" />
-45-->C:\tcm\android\app\src\main\AndroidManifest.xml:28:13-73
-45-->C:\tcm\android\app\src\main\AndroidManifest.xml:28:23-70
-46            </intent-filter>
-47        </activity>
-48        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-48-->C:\tcm\android\app\src\main\AndroidManifest.xml:31:7-84
-48-->C:\tcm\android\app\src\main\AndroidManifest.xml:31:17-81
-49
-50        <provider
-50-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
-51            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-51-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-83
-52            android:authorities="com.tcm.fileprovider"
-52-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
-53            android:exported="false"
-53-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
-54            android:grantUriPermissions="true" >
-54-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
-55            <meta-data
-55-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:63
-56                android:name="android.support.FILE_PROVIDER_PATHS"
-56-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
-57                android:resource="@xml/file_provider_paths" />
-57-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-60
-58        </provider>
-59
-60        <meta-data
-60-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:11:9-13:43
-61            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
-61-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:12:13-84
-62            android:value="GlideModule" />
-62-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:13:13-40
-63    </application>
-64
-65</manifest>
+33        android:theme="@style/AppTheme"
+33-->C:\tcm\android\app\src\main\AndroidManifest.xml:19:7-38
+34        android:usesCleartextTraffic="true" >
+34-->C:\tcm\android\app\src\debug\AndroidManifest.xml:7:18-53
+35        <activity
+35-->C:\tcm\android\app\src\main\AndroidManifest.xml:20:7-30:18
+36            android:name="com.tcm.MainActivity"
+36-->C:\tcm\android\app\src\main\AndroidManifest.xml:21:9-37
+37            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+37-->C:\tcm\android\app\src\main\AndroidManifest.xml:23:9-86
+38            android:label="@string/app_name"
+38-->C:\tcm\android\app\src\main\AndroidManifest.xml:22:9-41
+39            android:launchMode="singleTask"
+39-->C:\tcm\android\app\src\main\AndroidManifest.xml:24:9-40
+40            android:windowSoftInputMode="adjustResize" >
+40-->C:\tcm\android\app\src\main\AndroidManifest.xml:25:9-51
+41            <intent-filter>
+41-->C:\tcm\android\app\src\main\AndroidManifest.xml:26:9-29:25
+42                <action android:name="android.intent.action.MAIN" />
+42-->C:\tcm\android\app\src\main\AndroidManifest.xml:27:13-65
+42-->C:\tcm\android\app\src\main\AndroidManifest.xml:27:21-62
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->C:\tcm\android\app\src\main\AndroidManifest.xml:28:13-73
+44-->C:\tcm\android\app\src\main\AndroidManifest.xml:28:23-70
+45            </intent-filter>
+46        </activity>
+47        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+47-->C:\tcm\android\app\src\main\AndroidManifest.xml:31:7-84
+47-->C:\tcm\android\app\src\main\AndroidManifest.xml:31:17-81
+48
+49        <provider
+49-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
+50            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+50-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-83
+51            android:authorities="com.tcm.fileprovider"
+51-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
+52            android:exported="false"
+52-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+53            android:grantUriPermissions="true" >
+53-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+54            <meta-data
+54-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:63
+55                android:name="android.support.FILE_PROVIDER_PATHS"
+55-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
+56                android:resource="@xml/file_provider_paths" />
+56-->[:react-native-webview] C:\tcm\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-60
+57        </provider>
+58
+59        <meta-data
+59-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:11:9-13:43
+60            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+60-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:12:13-84
+61            android:value="GlideModule" />
+61-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\58a0708f7cc58d169e3a733a55bec454\okhttp3-integration-4.11.0\AndroidManifest.xml:13:13-40
+62    </application>
+63
+64</manifest>

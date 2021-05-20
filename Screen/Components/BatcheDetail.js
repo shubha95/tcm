@@ -47,11 +47,6 @@ const text =
               style={{ marginLeft: 15,marginRight:10, marginTop:10,fontSize:22}}
           />
       <View>
-     
-
-  
- 
- 
     </View>
 
 

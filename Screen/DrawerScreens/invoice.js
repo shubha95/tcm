@@ -3,14 +3,15 @@ import {View , Text, Image ,TouchableOpacity,StyleSheet,SafeAreaView,ScrollView}
 import { Card } from 'react-native-elements';
 import Loader from '../Components/Loader';
 const CustomCard = (props) => {
-  console.log("Course Detele id == ",props.route.params.id);
+  console.log("Order id == ",props.route.params.id);
  
   const [invoiceDetail, setinvoice] = useState([]); 
  
   const [loading, setLoading] = useState(false);
-  const SubCoursedetales = ()=>{
+  const invoiceDetails = ()=>{
     setLoading(true);
-    fetch('http://naukrighar.org/api/invoice'+props.route.params.id,{
+    console.log("url",'http://naukrighar.org/api/invoice'+props.route.params.id)
+    fetch('http://naukrighar.org/api/invoice/'+props.route.params.id,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
@@ -18,10 +19,13 @@ const CustomCard = (props) => {
     .then((json) => setinvoice(json))
     .catch((error) => console.error(error))
     .finally(() => setLoading(false));
+  };  
+  useEffect(()=>{ 
+    invoiceDetails();
+  },[]);
     
 
-    console.log("invoide inrole date == ",invoiceDetail);
-  }
+  console.log("invoide inrole date == ",invoiceDetail);
     return(
         <SafeAreaView >
         <ScrollView >
@@ -39,25 +43,28 @@ const CustomCard = (props) => {
               />
             </View> */}
         <Text style={styles.paragraph}> Enroll Date : {invoiceDetail.enrolldate}</Text>
-        <Text style={styles.paragraph}>From : TCM Address: 57 S. P. Marg, Civil Lines , Prayagraj (211001) INDIA</Text>
-        <Text style={styles.paragraph}>Phone : 9336339618</Text>
-        <Text style={styles.paragraph}>Email : tcm.education14@gmail.com</Text>
-        <Text style={styles.paragraph}>To : Shubahm </Text>
-        <Text style={styles.paragraph}>Address: 57 S. P. Marg, Civil Lines , Prayagraj (211001) INDIA </Text>
-        <Text style={styles.paragraph}>Phone : 9336339618</Text>
-        <Text style={styles.paragraph}>Email : tcm.education14@gmail.com</Text>
-        <Text style={styles.paragraph}>OrderID: TCM896567776sss</Text>
-        <Text style={styles.paragraph}>Transaction ID: 898989XXXXXX89</Text>
+        <Text style={styles.paragraph}>To: {invoiceDetail.to}</Text>
+        <Text style={styles.paragraph}> Email : {invoiceDetail.toemail} </Text>
+        <Text style={styles.paragraph}>Address: {invoiceDetail.toaddress}</Text>
+        <Text style={styles.paragraph}>Phone : {invoiceDetail.tomobile}</Text>
+        <Text style={styles.paragraph}>Price : {invoiceDetail.totalpay}</Text>
+        <Text style={styles.paragraph}>Frome : {invoiceDetail.from} </Text>
+        <Text style={styles.paragraph}>Email : {invoiceDetail.email} </Text>
+        <Text style={styles.paragraph}>Address: {invoiceDetail.address}</Text>
+        <Text style={styles.paragraph}>Phone : {invoiceDetail.phone}</Text>
+
+        {/* <Text style={styles.paragraph}>Transaction ID: 898989XXXXXX89</Text>
         <Text style={styles.paragraph}>PaymentMode: Admin Enroll</Text>
         <Text style={styles.paragraph}>Currency: USD</Text>
-        <Text style={styles.paragraph}>Payment Status: Recieved </Text>
-        <Text style={styles.paragraph}>Enroll On: 5th March 2021</Text>
-        <TouchableOpacity
+        <Text style={styles.paragraph}>Payment Status: Recieved </Text> */}
+        <Text style={styles.paragraph}>Enroll On: {invoiceDetail.enrollon}</Text>
+        <Text style={styles.paragraph}>Total Price : {invoiceDetail.totalpay}</Text>
+        {/* <TouchableOpacity
             // onPress={()=>props.onPressDetails()}
             style={styles.buttonStyle}
             >
             <Text style={styles.buttonTextStyle}>Download</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </Card>
       
      </ScrollView>

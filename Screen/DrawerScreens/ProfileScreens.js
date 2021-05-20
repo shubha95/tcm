@@ -12,7 +12,7 @@ const ProfileScreens = () => {
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
     // valueParsed = setUser(valueParsed);
-    console.log("Url",'https://naukrighar.org/api/subcategoryapi/'+valueParsed);
+    console.log("Url",'http://naukrighar.org/api/myprofile/'+valueParsed);
 
     fetch('http://naukrighar.org/api/myprofile/'+valueParsed,{
       method: 'GET',

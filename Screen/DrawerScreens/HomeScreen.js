@@ -92,7 +92,7 @@ const HomeScreens = () => {
           }}
         />
       </View>
-     <View><Text style={styles.heading}>Coures</Text>
+     <View><Text style={styles.heading}>Courses</Text>
      
      <FlatList
           data={coursecategory}

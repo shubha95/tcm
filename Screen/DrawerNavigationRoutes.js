@@ -20,6 +20,7 @@ import Invoice from './DrawerScreens/invoice';
 import LiveRoom from './LiveRoom';
 import JoinMeet from './JoinMeet';
 import SubCourse from './DrawerScreens/SubCourse';
+import MyCourses from './DrawerScreens/Mycourses';
 
 
 const Stack = createStackNavigator();
@@ -79,7 +80,7 @@ const homeScreenStack = ({navigation}) => {
         name="ViewCourseDetale"
         component={CourseDetails}
         options={{
-          title: 'View Course Detale', //Set Header Title
+          title: 'View Course Details', //Set Header Title
           headerStyle: {
             backgroundColor: '#307ecc', //Set Header color
           },
@@ -93,7 +94,7 @@ const homeScreenStack = ({navigation}) => {
         name="ViewSubCourse"
         component={SubCourse}
         options={{
-          title: 'Related Course Detale', //Set Header Title
+          title: 'Related Course Detail', //Set Header Title
           headerStyle: {
             backgroundColor: '#307ecc', //Set Header color
           },
@@ -107,7 +108,7 @@ const homeScreenStack = ({navigation}) => {
         name="ViewUpcomingBatch"
         component={BatcheDetail}
         options={{
-          title: 'Batche Detail', //Set Header Title
+          title: 'Upcoming Batches Detail', //Set Header Title
           headerStyle: {
             backgroundColor: '#307ecc', //Set Header color
           },
@@ -117,7 +118,6 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       />
-
       {/* <Stack.Screen
         name="PurchaseHistory"
         component={PurchaseHistory}
@@ -159,13 +159,20 @@ const CourseScreenStack = ({navigation}) => {
           options={{
             title: 'Course', //Set Header Title
           }}/>
-        <Stack.Screen
-          name="ViewSubCourse"
-          component={SubCourse}
-          options={{
-            title: 'Related Course Detale', //Set Header Title
-          }}   
-          />
+   <Stack.Screen
+        name="ViewUpcomingBatch"
+        component={BatcheDetail}
+        options={{
+          title: 'Batches Detail', //Set Header Title
+          // headerStyle: {
+          //   backgroundColor: '#307ecc', //Set Header color
+          // },
+          // headerTintColor: '#fff', //Set Header text color
+          // headerTitleStyle: {
+          //   fontWeight: 'bold', //Set Header text style
+          // },
+        }}
+      />
   
     </Stack.Navigator>
   );
@@ -210,9 +217,7 @@ const PurchaseScreenStack = ({navigation}) => {
     <Stack.Navigator
       initialRouteName="PurcaseScreens"
       screenOptions={{
-        headerLeft: () => (
-          <NavigationDrawerHeader navigationProps={navigation} />
-        ),
+        
         headerStyle: {
           backgroundColor: '#307ecc', //Set Header color
         },
@@ -226,13 +231,17 @@ const PurchaseScreenStack = ({navigation}) => {
            name="PurcaseScreens"
            component={PurchaseHistory}
            options={{
+            headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
           title: 'Purchase History', //Set Header Title
           }}/>
         <Stack.Screen
           name="Invoicedetail"
           component={Invoice}
-          options={({ route }) => ({ title: 'Invoice Detail' })}
- 
+          options={{
+        title: 'Invoice Detail', //Set Header Title
+        }}
           />
   
     </Stack.Navigator>
@@ -306,6 +315,47 @@ const ProfileScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
+const mycoursesScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="mycourse"
+      screenOptions={{
+
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="mycourse"
+        component={MyCourses}
+        options={{
+          headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+          title: 'My Courses', //Set Header Title
+        }}
+      />
+      <Stack.Screen
+        name="ViewUpcomingBatchs"
+        component={BatcheDetail}
+        options={{
+          title: 'Batches Detail', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 
 const DrawerNavigatorRoutes = (props) => {
@@ -346,10 +396,15 @@ const DrawerNavigatorRoutes = (props) => {
         options={{drawerLabel: 'Live Classes'}}
         component={LiveClassesScreenStack}
       />
-    <Drawer.Screen
+      <Drawer.Screen
         name="PurchaseScreenStack"
         options={{drawerLabel: 'Purchase History'}}
         component={PurchaseScreenStack}
+      />
+     <Drawer.Screen
+        name="mycoursesScreenStack"
+        options={{drawerLabel: 'My Courses'}}
+        component={mycoursesScreenStack}
       />
     </Drawer.Navigator>
   );
