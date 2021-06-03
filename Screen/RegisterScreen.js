@@ -67,7 +67,7 @@ const RegisterScreen = ({navigation}) => {
       c_password:userRepassword
     };
     console.log("Alll Input Deta ",dataToSend)
-    fetch('https://naukrighar.org/api/register', {
+    fetch('http://tcmeducation.in/api/register', {
       method: 'POST',
       body:JSON.stringify(dataToSend) ,
       headers: {"Content-type": "application/json; charset=UTF-8"}

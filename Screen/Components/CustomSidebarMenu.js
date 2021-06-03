@@ -23,9 +23,9 @@ const CustomSidebarMenu = (props) => {
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
     // valueParsed = setUser(valueParsed);
-    console.log("Url",'http://naukrighar.org/api/myprofile/'+valueParsed);
+    console.log("Url",'http://tcmeducation.in/api/myprofile/'+valueParsed);
 
-    fetch('http://naukrighar.org/api/myprofile/'+valueParsed,{
+    fetch('http://tcmeducation.in/api/myprofile/'+valueParsed,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })
@@ -79,16 +79,16 @@ const CustomSidebarMenu = (props) => {
       <DrawerContentScrollView {...props}>
          <TouchableOpacity
             onPress={()=>navigation.navigate('homeScreenStack')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={()=>navigation.navigate('CourseScreenStack')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={()=>{
@@ -97,21 +97,21 @@ const CustomSidebarMenu = (props) => {
               });
               //navigation.navigate('PurchaseScreenStack')
               }}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={()=>navigation.navigate('Liveroom')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
           </TouchableOpacity>
           
           <TouchableOpacity
             onPress={()=>navigation.navigate('ProfileScreenStack')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
           </TouchableOpacity>
          <TouchableOpacity
             onPress={()=>navigation.navigate('aboutScreenStack')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
           </TouchableOpacity>
 
 
@@ -119,7 +119,7 @@ const CustomSidebarMenu = (props) => {
 
 
             onPress={()=>logouts('')}  >
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
+            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
           </TouchableOpacity>
 
 
@@ -167,13 +167,13 @@ const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#307ecc',
+    backgroundColor: '#00A0E3',
     paddingTop: 10,
     color: 'white',
   },
   profileHeader: {
     flexDirection: 'row',
-    backgroundColor: '#307ecc',
+    backgroundColor: '#00A0E3',
     padding: 15,
     textAlign: 'center',
   },

@@ -13,8 +13,8 @@ const MyCourses = () => {
     console.log("Purchase",mycourse);
     const getValuesFromStorage = async () => {
      let valueParsed   =  await AsyncStorage.getItem('token');
-     console.log("Url",'http://naukrighar.org/api/mycourses/'+valueParsed);
-     fetch('http://naukrighar.org/api/mycourses/'+valueParsed,{
+     console.log("Url",'http://tcmeducation.in/api/mycourses/'+valueParsed);
+     fetch('http://tcmeducation.in/api/mycourses/'+valueParsed,{
        method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
      })

@@ -14,7 +14,7 @@ const SubCourse = (props) => {
   const [loading, setLoading] = useState(false);
   const Bachdetails = ()=>{
     setLoading(true);
-    fetch('http://naukrighar.org/api/batch-detail/'+props.route.params.id,{
+    fetch('http://tcmeducation.in/api/batch-detail/'+props.route.params.id,{
         method: 'GET',
         headers: {"Content-type": "application/json; charset=UTF-8"}
        })
@@ -44,7 +44,7 @@ const text =
       <HTMLView
              value={details}
               // value={BachesDetaile.detail} 
-              style={{ marginLeft: 15,marginRight:10, marginTop:10,fontSize:22}}
+              style={styles.htmtext}
           />
       <View>
     </View>
@@ -57,10 +57,14 @@ const text =
 
 export default SubCourse;
 const styles = StyleSheet.create({
+  htmtext:{
+ 
+    marginLeft: 28,marginRight:10, marginTop:10, fontWeight:'bold',fontSize:30,
+  },
     container: {
         backgroundColor: '#fff', 
         fontSize: 18,
-    },
+    }, 
     textstyle:{
        textAlign: 'center', 
        fontSize:30 , 
@@ -81,6 +85,7 @@ const styles = StyleSheet.create({
       width: 345,
       height: 230,
       justifyContent: 'center',
+      // resizeMode: 'contain',
       marginTop:10,
      marginLeft: 20, 
     },

@@ -1345,6 +1345,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable image_about
 drawable image_ajayabout
 drawable image_banner2
 drawable image_cat

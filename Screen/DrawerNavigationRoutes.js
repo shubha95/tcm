@@ -34,15 +34,22 @@ const homeScreenStack = ({navigation}) => {
         component={HomeScreen}
         options={{
           title: 'TCM Education', //Set Header Title
+          drawerIcon: ({focused, size}) => (
+              <Ionicons
+                 name="md-home"
+                 size={size}
+                 color={focused ? '#7cc' : '#ccc'}
+              />
+           ),
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },    // headerLeft: () => (
           //   <NavigationDrawerHeader navigationProps={navigation} />
           // ),
-          headerTintColor: '#fff', //Set Header text color
+          headerTintColor: '#ffff', //Set Header text color
           headerTitleStyle: {
             fontWeight: 'bold', //Set Header text style
           },
@@ -54,9 +61,9 @@ const homeScreenStack = ({navigation}) => {
         options={{
           title: 'Purchase History', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
-          headerTintColor: '#fff', //Set Header text color
+          headerTintColor: '#FFFFFF', //Set Header text color
           headerTitleStyle: {
             fontWeight: 'bold', //Set Header text style
           },
@@ -68,7 +75,7 @@ const homeScreenStack = ({navigation}) => {
         options={{
           title: 'View Course', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -82,7 +89,7 @@ const homeScreenStack = ({navigation}) => {
         options={{
           title: 'View Course Details', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -96,7 +103,7 @@ const homeScreenStack = ({navigation}) => {
         options={{
           title: 'Related Course Detail', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -110,7 +117,7 @@ const homeScreenStack = ({navigation}) => {
         options={{
           title: 'Upcoming Batches Detail', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -146,7 +153,7 @@ const CourseScreenStack = ({navigation}) => {
           <NavigationDrawerHeader navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -187,7 +194,7 @@ const aboutScreenStack = ({navigation}) => {
           <NavigationDrawerHeader navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -200,7 +207,7 @@ const aboutScreenStack = ({navigation}) => {
         options={{
           title: 'About', //Set Header Title
             headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -219,7 +226,7 @@ const PurchaseScreenStack = ({navigation}) => {
       screenOptions={{
         
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -257,7 +264,7 @@ const LiveClassesScreenStack = ({navigation}) => {
           <NavigationDrawerHeader navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -298,7 +305,7 @@ const ProfileScreenStack = ({navigation}) => {
           <NavigationDrawerHeader navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -322,7 +329,7 @@ const mycoursesScreenStack = ({navigation}) => {
       screenOptions={{
 
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#00A0E3', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -345,7 +352,7 @@ const mycoursesScreenStack = ({navigation}) => {
         options={{
           title: 'Batches Detail', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00A0E3', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {

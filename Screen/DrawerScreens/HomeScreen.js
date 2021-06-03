@@ -24,7 +24,7 @@ const HomeScreens = () => {
     }
   const category = () =>{
     setLoading(true);
-    fetch('http://naukrighar.org/api/category',{
+    fetch('http://tcmeducation.in/api/category',{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
@@ -35,7 +35,7 @@ const HomeScreens = () => {
   }
   const Upcamicbach = ()=>{
       setLoading(true);
-      fetch('http://naukrighar.org/api/upcoming-batches',{
+      fetch('http://tcmeducation.in/api/upcoming-batches',{
         method: 'GET',
         headers: {"Content-type": "application/json; charset=UTF-8"}
        })
@@ -59,23 +59,7 @@ const HomeScreens = () => {
          source={require('../../Image/banner2.png')}
       />
       </View>
-                 {/* <View style={styles.buttonContainer}>  
-                    <Button  
-                        onPress={onPressButton}  
-                        style={styles.buttonStyle}
-                        title="Register For Off line Classes."  
           
-                    />  
-                </View>  */}
-                {/* <View style={styles.buttonContainer}>  
-                    <Button
-                        onPress={onPressButton}  
-                        style={styles.buttonStyle}
-                        title="Register For Online Classes."  
-                        
-                    />  
-                 </View>  */}
-             
      <View ><Text style={styles.heading}>UPCOMING BATCHES</Text>
         <FlatList
           data={data}

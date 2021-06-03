@@ -14,9 +14,8 @@ const CustomCard = (props) => {
                 source={image}
                   style={{
                   width: 345,
-                  height: 200,
+                  height: 235,
                   justifyContent: 'center',
-                  marginRight: 45,
                 }}
               />
               <Text style={styles.heding} >{props.upcomingb}</Text>
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
         color: '#34495e',
       },
       buttonStyle: {
-        backgroundColor: '#307ecc',
+        backgroundColor: '#00A0E3',
         borderWidth: 0,
         color: '#FFFFFF',
         borderColor: '#307ecc',

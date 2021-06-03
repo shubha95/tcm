@@ -12,9 +12,9 @@ const ProfileScreens = () => {
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
     // valueParsed = setUser(valueParsed);
-    console.log("Url",'http://naukrighar.org/api/myprofile/'+valueParsed);
+    console.log("Url",'http://tcmeducation.in/api/myprofile/'+valueParsed);
 
-    fetch('http://naukrighar.org/api/myprofile/'+valueParsed,{
+    fetch('http://tcmeducation.in/api/myprofile/'+valueParsed,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })

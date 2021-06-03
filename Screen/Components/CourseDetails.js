@@ -15,14 +15,14 @@ const CourseDetails = (props) => {
   const [loading, setLoading] = useState(false);
   const Coursedetale = ()=>{
     setLoading(true);
-    fetch('http://naukrighar.org/api/category-detail/'+props.route.params.id,{
+    fetch('http://tcmeducation.in/api/category-detail/'+props.route.params.id,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
      .then((response) =>{return response.json()}  )
     .then((json) =>{setData(json);
       console.log("my Course Id === ",json.id);
-      fetch('https://naukrighar.org/api/subcategoryapi/'+json.id,{
+      fetch('http://tcmeducation.in/api/subcategoryapi/'+json.id,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
       })

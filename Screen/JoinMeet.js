@@ -24,6 +24,9 @@ export default class JoinMeet extends Component {
   render() {
     return (
       <WebView 
+                useWebKit
+                 
+              
          userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
         mediaPlaybackRequiresUserAction={true}
         domStorageEnabled={true}
@@ -32,6 +35,7 @@ export default class JoinMeet extends Component {
           allowFileAccessFromFileURLs={true}
         allowUniversalAccessFromFileURLs={true}
         originWhitelist={['*']}
+        allowsInlineMediaPlayback
         bounces={true}
       />
     );

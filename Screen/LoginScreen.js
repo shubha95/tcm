@@ -1,4 +1,4 @@
-// Import React and Component
+ // Import React and Component
 import React, {useState, createRef} from 'react';
 import { StyleSheet,TextInput, View, Text, ScrollView, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView, } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -38,7 +38,7 @@ const LoginScreen = ({navigation}) => {
 
   console.log("datatosend",dataToSend);
 
-    fetch('https://naukrighar.org/api/login', {
+    fetch('http://tcmeducation.in/api/login', {
       method: 'POST',
       body:JSON.stringify(dataToSend) ,
       headers: {"Content-type": "application/json; charset=UTF-8"}

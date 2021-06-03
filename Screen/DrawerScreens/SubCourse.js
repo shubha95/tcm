@@ -17,7 +17,7 @@ const SubCourse = (props) => {
   const [loading, setLoading] = useState(false);
   const SubCoursedetales = ()=>{
     setLoading(true);
-    fetch('https://naukrighar.org/api/subcategory-detail/'+props.route.params.id,{
+    fetch('http://tcmeducation.in/api/subcategory-detail/'+props.route.params.id,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
@@ -26,7 +26,7 @@ const SubCourse = (props) => {
       setLoading(true);
       // console.log("my Sub_Course Id === ",json.id);
       // console.log("Url ==", 'http://naukrighar.org/api/related-baches/'+json.id);
-      fetch('http://naukrighar.org/api/related-baches/'+json.id,{
+      fetch('http://tcmeducation.in/api/related-baches/'+json.id,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
       })

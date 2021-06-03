@@ -12,7 +12,7 @@ const CourseScreen = () => {
   const [data, setData] = useState([]);
 console.log(data)
   useEffect(() => {
-    fetch('http://naukrighar.org/api/category')
+    fetch('http://tcmeducation.in/api/category')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))

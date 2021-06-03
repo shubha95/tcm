@@ -17,7 +17,7 @@
     // valueParsed = setUser(valueParsed);
     console.log("Url",valueParsed);
 
-    fetch('http://naukrighar.org/api/purchase-history/'+valueParsed,{
+    fetch('http://tcmeducation.in/api/purchase-history/'+valueParsed,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })
