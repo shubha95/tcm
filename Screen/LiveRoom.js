@@ -4,6 +4,7 @@ import { Card } from 'react-native-elements';
 import CustomCard from './Components/CustomCard';
 import { WebView } from 'react-native-webview';
 import {Permission, PERMISSION_TYPE} from '../Screen/AppPermission';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const bbb = require('bigbluebutton-js')
 let api = bbb.api(
@@ -40,56 +41,27 @@ export default class LiveRoom extends Component {
         // })
     }
   
-    refresh_class = () =>{
-        this.setState({ meetings: {} });
-        http(infosUrl).then((result) => {
-            this.setState({ meetings: result.meetings });
-        })
-    }
-    cameraPermission = async () => {
-
-        let granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.CAMERA,
-          {
-            title: "Camera Permission",
-            message:
-              "App needs access to your camera " +
-              "so others can see you.",
-            buttonNeutral: "Ask Me Later",
-            buttonNegative: "Cancel",
-            buttonPositive: "OK"
-          }
-        );
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log("You can use the camera");
-        } else {
-          console.log("Camera permission denied");
-        }
-        return;
+    // refresh_class = () =>{
+    //     this.setState({ meetings: {} });
+    //     http(infosUrl).then((result) => {
+    //         this.setState({ meetings: result.meetings });
+    //     })
+    // }
+    userclass = async () => {
+      let valueParsed   =  await AsyncStorage.getItem('token');
+      console.log("Tokan===",valueParsed)
+      fetch('http://tcmeducation.in/api/my-live-classess/'+valueParsed,{
+        method: 'GET',
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+      })
+      .then((response) => response.json())
+      this.setState({ meetings:response.json() })
+       
+      .finally(() => setLoading(false));
+      
     }
     
-    micPermission = async () => {
-    
-    let granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-      {
-        title: "Audio Permission",
-        message:
-          "App needs access to your audio / microphone",
-        buttonNeutral: "Ask Me Later",
-        buttonNegative: "Cancel",
-        buttonPositive: "OK"
-      }
-    );
-    
-    
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log("You can use the Microphone");
-    } else {
-      console.log("Microphone permission denied");
-    } 
-    return; 
-}
+ 
  
 
 
@@ -98,21 +70,19 @@ export default class LiveRoom extends Component {
 
 
     componentDidMount() {
- 
+             this.userclass();
           console.log("meting Info ",infosUrl);
-         this.micPermission();
-       Permission.checkPermission(PERMISSION_TYPE.microphone)
-       this.cameraPermission();
+        
+    
 
-
-        displayData = async ()=>{  
-            try{  
-              this.setState({ user: await AsyncStorage.getItem('user_id') });
-            }  
-            catch(error){  
-              alert(error)  
-            }  
-          }  
+        // displayData = async ()=>{  
+        //     try{  
+        //       this.setState({ user: await AsyncStorage.getItem('user_id') });
+        //     }  
+        //     catch(error){  
+        //       alert(error)  
+        //     }  
+        //   }  
         
         // let meetingCreateUrl = api.administration.create('My Meeting', '1', {
         //     duration: 20,

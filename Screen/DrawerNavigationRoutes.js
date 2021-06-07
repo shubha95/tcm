@@ -18,6 +18,7 @@ import BatcheDetail from './Components/BatcheDetail';
 import PurchaseHistory from './DrawerScreens/PurchaseHistory';
 import Invoice from './DrawerScreens/invoice';
 import LiveRoom from './LiveRoom';
+import LiveClass from './LiveClass'
 import JoinMeet from './JoinMeet';
 import SubCourse from './DrawerScreens/SubCourse';
 import MyCourses from './DrawerScreens/Mycourses';
@@ -274,7 +275,7 @@ const LiveClassesScreenStack = ({navigation}) => {
      
       <Stack.Screen
         name="LiveRoom"
-        component={LiveRoom}
+        component={LiveClass}
         options={{
           title: 'Live Class ', //Set Header Title
           // headerStyle: {
