@@ -24,6 +24,8 @@ import SubCourse from './DrawerScreens/SubCourse';
 import MyCourses from './DrawerScreens/Mycourses';
 import TarmcCondition from './DrawerScreens/tarmccondition';
 import privacypolicy from './DrawerScreens/privacypolicy';
+import JoinClass from './JoinClass';
+import PayNowDetails from './DrawerScreens/PayNowDetails';
 
 
 const Stack = createStackNavigator();
@@ -53,6 +55,20 @@ const homeScreenStack = ({navigation}) => {
           //   <NavigationDrawerHeader navigationProps={navigation} />
           // ),
           headerTintColor: '#ffff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+      <Stack.Screen
+        name="PayNowDetails"
+        component={PayNowDetails}
+        options={{
+          title: 'Summary', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#00A0E3', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
             fontWeight: 'bold', //Set Header text style
           },
@@ -114,6 +130,7 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       />
+      
       <Stack.Screen
         name="ViewUpcomingBatch"
         component={BatcheDetail}
@@ -290,10 +307,10 @@ const LiveClassesScreenStack = ({navigation}) => {
         }}
       />
       <Stack.Screen
-        name="JoinMeet"
-        component={JoinMeet}
+        name="JoinClass"
+        component={JoinClass}
         options={{
-        title: 'Join Meet', //Set Header Title
+         headerShown:false
         }}
       />
     </Stack.Navigator>

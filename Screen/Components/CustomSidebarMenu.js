@@ -12,6 +12,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-community/async-storage';
 
 import { useNavigation } from '@react-navigation/native';
+import Entypo  from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
  
 
 const CustomSidebarMenu = (props) => {
@@ -77,54 +79,67 @@ const CustomSidebarMenu = (props) => {
       <View style={stylesSidebar.profileHeaderLine} />
 
       <DrawerContentScrollView {...props}>
-         <TouchableOpacity
-            onPress={()=>navigation.navigate('homeScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>Home</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('CourseScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>Courses</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}> My Courses</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>{
-              navigation.reset({
-                routes: [{ name: 'PurchaseScreenStack' }]
-              });
-              //navigation.navigate('PurchaseScreenStack')
-              }}  >
-            <Text style={stylesSidebar.textStyle}>Purchase History</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('Liveroom')}  >
-            <Text style={stylesSidebar.textStyle}>Live Classes</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('ProfileScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>Profile</Text>
-          </TouchableOpacity>
-         <TouchableOpacity
-            onPress={()=>navigation.navigate('aboutScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>About TCM Education</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('privacypolicyScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>Privacy Policy</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('tarmconditionScreenStack')}  >
-            <Text style={stylesSidebar.textStyle}>Terms & Condition</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>logouts('')}  >
-            <Text style={stylesSidebar.textStyle}>LogOut</Text>
-          </TouchableOpacity>
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+              <Entypo name="home" size={20} color='white' style={{marginTop:10}}/>
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('homeScreenStack')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',}}>
+              <Image source={require('../../Image/home.png')} />
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('CourseScreenStack')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',}}>
+              <Image source={require('../../Image/home.png')} />
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+              <MaterialCommunityIcons name="history" size={25} color="white" style={{marginTop:10}} />
+              <TouchableOpacity
+                onPress={()=>{
+                  navigation.reset({
+                    routes: [{ name: 'PurchaseScreenStack' }]
+                  });
+                  //navigation.navigate('PurchaseScreenStack')
+                  }}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',}}>
+              <Image source={require('../../Image/home.png')} />
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('Liveroom')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+              <MaterialCommunityIcons name="account-circle" size={25} color='white' style={{marginTop:10}}/>
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('ProfileScreenStack')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+              <Entypo name="info-with-circle" size={20} color='white' style={{marginTop:10}}/>
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('aboutScreenStack')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+            <MaterialCommunityIcons name="logout" size={25} color='white' style={{marginTop:10}}/>
+              <TouchableOpacity
+              onPress={()=>logouts('')}  >
+                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
+              </TouchableOpacity>
+            </View>
 
 
 
