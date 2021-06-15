@@ -76,18 +76,16 @@ const PayNowDetails = (props) => {
                 theme: {color: '#00A0E3'}
               }
               RazorpayCheckout.open(options).then(async(data) => {
-                // handle success
                 console.log(data.razorpay_order_id)
                 console.log(data.razorpay_signature);
                 console.log(data.razorpay_payment_id);
-                // alert(`Success: ${data.razorpay_payment_id}`);
                 let params = {
                     "rzp_signature": data.razorpay_signature,
                     "rzp_paymentid": data.razorpay_payment_id,
                     "rzp_orderid": data.razorpay_order_id,
                     "courseorderid": courseorderid
                 }
-                console.log("params... ",params);
+                console.log("params... get ...",params);
                 // let paymemtRes =  await axios.post('http://tcmeducation.in/api/payment-complete',params);
                 // console.log("axios payment com",paymemtRes.data);
               }).catch((error) => {
