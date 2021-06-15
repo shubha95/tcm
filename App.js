@@ -13,6 +13,8 @@ import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
 // import { Permission } from './Screen/AppPermission';
+import forgotpassword from './Screen/ForgotPassword';
+import updatepassword from './Screen/UpdatePassword';
 
 const Stack = createStackNavigator();
 const Auth = () => {
@@ -20,6 +22,20 @@ const Auth = () => {
   
   return (
     <Stack.Navigator initialRouteName="LoginScreen">
+     <Stack.Screen
+        name="ForgotPosswird"
+        component={forgotpassword}
+        options={{
+          title: 'Forgot Password', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
@@ -39,7 +55,20 @@ const Auth = () => {
           },
         }}
       />
-  
+      <Stack.Screen
+        name="UpdatePassword"
+        component={updatepassword}
+        options={{
+          title: 'Update Password', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };

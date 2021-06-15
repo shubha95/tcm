@@ -22,6 +22,8 @@ const HomeScreens = () => {
       valueParsed = setUser(valueParsed);
       // console.log("valueParsed",valueParsed);
     }
+//     var valmbar = Math.floor(1000 + Math.random() * 9000);
+// console.log(valmbar);
   const category = () =>{
     setLoading(true);
     fetch('http://tcmeducation.in/api/category',{
@@ -57,6 +59,10 @@ const HomeScreens = () => {
        <View>
          <Image  style={styles.tinyLogo}
          source={require('../../Image/banner2.png')}
+         style={{
+          width: 413,
+          justifyContent: 'center',
+        }}
       />
       </View>
           

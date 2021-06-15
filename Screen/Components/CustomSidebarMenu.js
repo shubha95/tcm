@@ -64,7 +64,7 @@ const CustomSidebarMenu = (props) => {
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>
         <View style={stylesSidebar.profileHeaderPicCircle}>
-          <Text style={{fontSize: 25, color: '#307ecc'}}> </Text>
+          <Text style={{fontSize:25, color: '#307ecc'}}> </Text>
           <Image
               source={require('../../Image/tcm-logo.png')}
               style={{width: '100%', resizeMode: 'contain', marginBottom: 20}}
@@ -79,16 +79,16 @@ const CustomSidebarMenu = (props) => {
       <DrawerContentScrollView {...props}>
          <TouchableOpacity
             onPress={()=>navigation.navigate('homeScreenStack')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
+            <Text style={stylesSidebar.textStyle}>Home</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={()=>navigation.navigate('CourseScreenStack')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
+            <Text style={stylesSidebar.textStyle}>Courses</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
+            <Text style={stylesSidebar.textStyle}> My Courses</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={()=>{
@@ -97,29 +97,33 @@ const CustomSidebarMenu = (props) => {
               });
               //navigation.navigate('PurchaseScreenStack')
               }}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
+            <Text style={stylesSidebar.textStyle}>Purchase History</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={()=>navigation.navigate('Liveroom')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
+            <Text style={stylesSidebar.textStyle}>Live Classes</Text>
           </TouchableOpacity>
           
           <TouchableOpacity
             onPress={()=>navigation.navigate('ProfileScreenStack')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
+            <Text style={stylesSidebar.textStyle}>Profile</Text>
           </TouchableOpacity>
          <TouchableOpacity
             onPress={()=>navigation.navigate('aboutScreenStack')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
+            <Text style={stylesSidebar.textStyle}>About TCM Education</Text>
           </TouchableOpacity>
-
-
           <TouchableOpacity
-
-
+            onPress={()=>navigation.navigate('privacypolicyScreenStack')}  >
+            <Text style={stylesSidebar.textStyle}>Privacy Policy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('tarmconditionScreenStack')}  >
+            <Text style={stylesSidebar.textStyle}>Terms & Condition</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={()=>logouts('')}  >
-            <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
+            <Text style={stylesSidebar.textStyle}>LogOut</Text>
           </TouchableOpacity>
 
 
@@ -167,14 +171,14 @@ const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#00A0E3',
-    paddingTop: 10,
-    color: 'white',
+    //backgroundColor: '#00A0E3',
+    //paddingTop: 10//,
+    //color: 'white',
   },
   profileHeader: {
     flexDirection: 'row',
     backgroundColor: '#00A0E3',
-    padding: 15,
+    padding: 20,
     textAlign: 'center',
   },
   profileHeaderPicCircle: {
@@ -194,10 +198,10 @@ const stylesSidebar = StyleSheet.create({
     fontWeight: 'bold',
   },
   profileHeaderLine: {
-    height: 1,
+    height: 3,
     marginHorizontal: 20,
     backgroundColor: '#e2e2e2',
-    marginTop: 15,
+   // marginTop: 15,
   },
   buttonTextStyle: {
     color: '#FFFFFF',
@@ -215,5 +219,13 @@ const stylesSidebar = StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
     marginTop:10,
+  },
+  textStyle:{
+    color: '#000000',
+    fontSize:16,
+    fontWeight:"400",
+    marginLeft:20,
+    marginTop:20,
+    fontFamily:"notoserif"
   },
 });

@@ -167,6 +167,11 @@ const LoginScreen = ({navigation}) => {
               <Text style={styles.buttonTextStyle}>LOGIN</Text>
             </TouchableOpacity>
             <Text
+                   style={styles.registerTextStyle}
+                   onPress={() => navigation.navigate('ForgotPosswird')}>
+                   forgot Password
+                 </Text>
+            <Text
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('RegisterScreen')}>
               No Account ? Register here

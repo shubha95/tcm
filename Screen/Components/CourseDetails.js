@@ -49,17 +49,17 @@ const CourseDetails = (props) => {
     
     <ScrollView>
     <Loader loading={loading} />
+    <Text style={styles.textstyle}>{data.name}</Text>
       <Image  style={styles.tinyLogo}
         source={{uri:data.image}}
-      />
-      <Text style={styles.textstyle}>{data.name}</Text>
-     
+      /> 
+        
+     <View style={styles.htmlStyle}>
           <HTMLView
               value={data.detail}
-              style={{ marginLeft: 15,marginRight:10,  fontWeight: '300',}}
+              style={{ marginLeft: 15,marginRight:10,  fontWeight: '300', textAlign:"justify",}}
           />
-        
-      
+      </View>
       {/* <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>{data.detail}</Text> */}
       <Text style={styles.subhading}>{data.name} RELATED COURSES</Text>
       <View >
@@ -91,8 +91,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     textstyle:{
+      marginTop:10,
        textAlign: 'center', 
-       fontSize:30 , 
+       fontSize:25, 
        fontWeight: 'bold',
     
     },
@@ -111,6 +112,16 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop:10,
      marginLeft: 20, 
+     marginBottom:10,
     },
-  
+    htmlStyle:{
+      marginLeft: 10,
+      marginRight:20,
+      fontSize: 16,
+      fontWeight: '800',
+      marginTop:10,
+      //fontFamily:"Lato",
+      textAlign:"justify",
+     // lineHeight:3.5,
+   }
   });

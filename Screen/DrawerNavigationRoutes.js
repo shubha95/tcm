@@ -22,6 +22,8 @@ import LiveClass from './LiveClass'
 import JoinMeet from './JoinMeet';
 import SubCourse from './DrawerScreens/SubCourse';
 import MyCourses from './DrawerScreens/Mycourses';
+import TarmcCondition from './DrawerScreens/tarmccondition';
+import privacypolicy from './DrawerScreens/privacypolicy';
 
 
 const Stack = createStackNavigator();
@@ -206,7 +208,7 @@ const aboutScreenStack = ({navigation}) => {
         name="AboutScreens"
         component={AboutScreens}
         options={{
-          title: 'About', //Set Header Title
+          title: 'About Tcm', //Set Header Title
             headerStyle: {
             backgroundColor: '#00A0E3', //Set Header color
           },
@@ -364,7 +366,58 @@ const mycoursesScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-
+const privacypolicyScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="privacypolicyScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#00A0E3', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="privacypolicyScreen"
+        component={privacypolicy}
+        options={{
+          title: 'Privacy Policy', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const tarmconditionScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="tarmconditionScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#00A0E3', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="tarmconditionScreen"
+        component={TarmcCondition}
+        options={{
+          title: 'Terms & Condition', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const DrawerNavigatorRoutes = (props) => {
   return (
@@ -413,6 +466,16 @@ const DrawerNavigatorRoutes = (props) => {
         name="mycoursesScreenStack"
         options={{drawerLabel: 'My Courses'}}
         component={mycoursesScreenStack}
+      />
+      <Drawer.Screen
+        name="privacypolicyScreenStack"
+        options={{drawerLabel: 'Privacy Policy'}}
+        component={privacypolicyScreenStack}
+      />
+      <Drawer.Screen
+        name="tarmconditionScreenStack"
+        options={{drawerLabel: 'Terms & Condition'}}
+        component={tarmconditionScreenStack}
       />
     </Drawer.Navigator>
   );

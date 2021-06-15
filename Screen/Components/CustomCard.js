@@ -24,7 +24,7 @@ const CustomCard = (props) => {
             onPress={()=>props.onPressDetails()}
             style={styles.buttonStyle}
             >
-            <Text style={styles.buttonTextStyle}>View Detail</Text>
+            <Text style={styles.buttonTextStyle}>View Details</Text>
           </TouchableOpacity>
             </View>
    

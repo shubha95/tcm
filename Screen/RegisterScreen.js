@@ -246,7 +246,7 @@ const RegisterScreen = ({navigation}) => {
           <Text
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('LoginScreen')}>
-              Already Register ? Please Login
+              Already Registered ? Please Login
             </Text>
         </KeyboardAvoidingView>
       </ScrollView>
