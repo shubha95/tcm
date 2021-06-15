@@ -21,6 +21,8 @@ const PayNowDetails = (props) => {
     const getApiData = async() =>{
         try{
 
+            // comments
+            
             let response =  await axios.get('http://tcmeducation.in/api/buy/'+props.route.params.course_id+"/"+props.route.params.user_id);
             console.log("axios",response.data.coursename);
             setCourseName(response.data.coursename);
@@ -85,7 +87,7 @@ const PayNowDetails = (props) => {
                     "rzp_orderid": data.razorpay_order_id,
                     "courseorderid": courseorderid
                 }
-                console.log("params... get ...",params);
+                console.log("params... get ..... code clean",params);
                 // let paymemtRes =  await axios.post('http://tcmeducation.in/api/payment-complete',params);
                 // console.log("axios payment com",paymemtRes.data);
               }).catch((error) => {
