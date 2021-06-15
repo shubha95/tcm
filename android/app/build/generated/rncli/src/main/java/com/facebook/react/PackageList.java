@@ -27,6 +27,8 @@ import com.rnfs.RNFSPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-permissions
 import com.zoontek.rnpermissions.RNPermissionsPackage;
+// react-native-razorpay
+import com.razorpay.rn.RazorpayPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
@@ -94,6 +96,7 @@ public class PackageList {
       new RNFSPackage(),
       new RNGestureHandlerPackage(),
       new RNPermissionsPackage(),
+      new RazorpayPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),

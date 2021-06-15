@@ -9,12 +9,14 @@ import { useNavigation } from '@react-navigation/native';
 import Loader from '../Components/Loader';
 import HTMLView from 'react-native-htmlview';
 import { Card } from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SubCourse = (props) => {
   console.log("Course Detele id == ",props.route.params.id);
   const navigation = useNavigation();
   const [SubCourseDetele, setData] = useState([]); 
   const [relatedbach, setrelatedbach] = useState([]); 
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState(null)
   const SubCoursedetales = ()=>{
     setLoading(true);
     fetch('http://tcmeducation.in/api/subcategory-detail/'+props.route.params.id,{
@@ -43,9 +45,12 @@ const SubCourse = (props) => {
   if(SubCourseDetele.detail != undefined){
     var details = `<div>${SubCourseDetele.detail.replace(/(\r\n|\n|\r)/gm, "")}</div>`;
    }
+
+  
   useEffect(()=>{
  
     SubCoursedetales();
+    
   },[]);
   
  console.log("Course Detae id ==", SubCourseDetele);
@@ -66,6 +71,7 @@ const SubCourse = (props) => {
               value= {details} 
               style={{ marginLeft: 15,marginRight:10, fontSize:20,}}
           />
+      
       <View>
      
 
