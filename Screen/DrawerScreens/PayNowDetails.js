@@ -67,7 +67,7 @@ const PayNowDetails = (props) => {
                 description: courseName,
                 image: 'https://i.imgur.com/3g7nmJC.png',
                 currency: 'INR',
-                key: 'rzp_test_MVRCQLwSXKrfqB', // Your api key
+                key: 'rzp_test_vrxxvnknXPzVB7', // Your api key
                 amount: coursePrice * 100,
                 name: 'Course',
                 prefill: {
@@ -88,8 +88,8 @@ const PayNowDetails = (props) => {
                     "courseorderid": courseorderid
                 }
                 console.log("params... get ..... code clean",params);
-                // let paymemtRes =  await axios.post('http://tcmeducation.in/api/payment-complete',params);
-                // console.log("axios payment com",paymemtRes.data);
+                 let paymemtRes =  await axios.post('http://tcmeducation.in/api/payment-complete',params);
+                console.log("axios payment com",paymemtRes.data);
               }).catch((error) => {
                 // handle failure
                 console.log(error);

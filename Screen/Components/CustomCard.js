@@ -8,7 +8,8 @@ const CustomCard = (props) => {
         <Card title={props.title}>
         {/*react-native-elements Card*/}
         <View >
-        {/* <Text style={styles.heding}>{props.heding}</Text> */}
+        {/* <Text style={styles.heding}>{props.id}</Text> */}
+        <Text style={styles.heding} >{props.upcomingb}</Text>
               <Image
               //  resizeMode="contain"
                 source={image}
@@ -18,8 +19,6 @@ const CustomCard = (props) => {
                   justifyContent: 'center',
                 }}
               />
-              <Text style={styles.heding} >{props.upcomingb}</Text>
-                       
         <TouchableOpacity
             onPress={()=>props.onPressDetails()}
             style={styles.buttonStyle}

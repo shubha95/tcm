@@ -62,19 +62,17 @@ const SubCourse = (props) => {
     <SafeAreaView>
     <ScrollView>
     <Loader loading={loading} />
+    <Text style={styles.textstyle}>{SubCourseDetele.name}</Text>
       <Image  style={styles.tinyLogo}
         source={{uri:SubCourseDetele.image}}
       />
-      <Text style={styles.textstyle}>{SubCourseDetele.name}</Text>
+      <View style={{marginLeft:10, marginLeft:30,textAlign:"justify",}}>
       <HTMLView
-     
               value= {details} 
-              style={{ marginLeft: 15,marginRight:10, fontSize:20,}}
+              stylesheet={styless}
           />
-      
+      </View>
       <View>
-     
-
       {edited ? (
       <Text style={{ marginLeft: 15,marginRight:10, fontSize:20}}>{SubCourseDetele.name} Related baches</Text>,
         <Card style={{marginBottom:50}}>
@@ -95,7 +93,7 @@ const SubCourse = (props) => {
             onPress={()=>navigation.navigate('ViewUpcomingBatch',{id:relatedbach.data.id})} 
             style={styles.buttonStyle}
             >
-            <Text style={styles.buttonTextStyle}>View Detail</Text>
+            <Text style={styles.buttonTextStyle}>View Details</Text>
           </TouchableOpacity>
 </Card>
 ) : (<Text></Text> )}
@@ -110,16 +108,28 @@ const SubCourse = (props) => {
 };
 
 export default SubCourse;
+const styless = StyleSheet.create({
+  p:{
+    // marginLeft: 28,marginRight:10, marginTop:10, fontWeight:'bold',fontSize:30,
+   
+   // fontWeight: '100',
+     textAlign:"justify",
+     lineHeight: 23,
+     fontSize:16,
+    //fontWeight: '300',
+    //color: '#FF3366', // make links coloured pink
+  },
+});
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff', 
         fontSize: 18,
     },
     textstyle:{
-       textAlign: 'center', 
-       fontSize:30 , 
-       fontWeight: 'bold',
-       marginTop:10,
+      marginTop:10,
+      textAlign: 'center', 
+      fontSize:25, 
+      fontWeight: 'bold',
     
     },
     subhading:{
@@ -135,8 +145,9 @@ const styles = StyleSheet.create({
       width: 345,
       height: 200,
       justifyContent: 'center',
-      marginTop:10,
-     marginLeft: 20, 
+      marginTop:20,
+     marginLeft: 30, 
+     marginBottom:15,
     },
     buttonStyle: {
       backgroundColor: '#307ecc',

@@ -80,28 +80,32 @@ const CustomSidebarMenu = (props) => {
 
       <DrawerContentScrollView {...props}>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
-              <Entypo name="home" size={20} color='white' style={{marginTop:10}}/>
+              <Entypo name="home" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
               <TouchableOpacity
                 onPress={()=>navigation.navigate('homeScreenStack')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Home</Text>
+                <Text style={stylesSidebar.textStyle}>Home</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',}}>
-              <Image source={require('../../Image/home.png')} />
+              <Image source={require('../../Image/course.png')} 
+                 style={stylesSidebar.imageiconStyle}
+              />
               <TouchableOpacity
                 onPress={()=>navigation.navigate('CourseScreenStack')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Courses</Text>
+                <Text style={stylesSidebar.textStyle}>Courses</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',}}>
-              <Image source={require('../../Image/home.png')} />
+              <Image source={require('../../Image/course.png')} 
+              style={stylesSidebar.imageiconStyle}
+              />
               <TouchableOpacity
                 onPress={()=>navigation.navigate('mycoursesScreenStack')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}> My Courses</Text>
+                <Text style={stylesSidebar.textStyle}> My Courses</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
-              <MaterialCommunityIcons name="history" size={25} color="white" style={{marginTop:10}} />
+              <MaterialCommunityIcons name="history" size={20} color='#000000' style={stylesSidebar.iconStyle} />
               <TouchableOpacity
                 onPress={()=>{
                   navigation.reset({
@@ -109,72 +113,56 @@ const CustomSidebarMenu = (props) => {
                   });
                   //navigation.navigate('PurchaseScreenStack')
                   }}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Purchase History</Text>
+                <Text style={stylesSidebar.textStyle}>Purchase History</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',}}>
-              <Image source={require('../../Image/home.png')} />
+              <Image source={require('../../Image/live_calss.png')} 
+                style={stylesSidebar.imageiconStyle}
+              />
               <TouchableOpacity
                 onPress={()=>navigation.navigate('Liveroom')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Live Classes</Text>
+                <Text style={stylesSidebar.textStyle}>Live Classes</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
-              <MaterialCommunityIcons name="account-circle" size={25} color='white' style={{marginTop:10}}/>
+              <MaterialCommunityIcons name="account-circle" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
               <TouchableOpacity
                 onPress={()=>navigation.navigate('ProfileScreenStack')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>Profile</Text>
+                <Text style={stylesSidebar.textStyle}>Profile</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
-              <Entypo name="info-with-circle" size={20} color='white' style={{marginTop:10}}/>
+              <Entypo name="info-with-circle" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
               <TouchableOpacity
                 onPress={()=>navigation.navigate('aboutScreenStack')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>About TCM Education</Text>
+                <Text style={stylesSidebar.textStyle}>About TCM Education</Text>
               </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
-            <MaterialCommunityIcons name="logout" size={25} color='white' style={{marginTop:10}}/>
+              <Entypo name="info-with-circle" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
               <TouchableOpacity
-              onPress={()=>logouts('')}  >
-                <Text style={{color: '#FFFF',fontSize:20,fontWeight:"100",marginLeft:20,marginTop:10,}}>LogOut</Text>
+                onPress={()=>navigation.navigate('privacypolicyScreenStack')}  >
+                <Text style={stylesSidebar.textStyle}>PRIVACY POLICY</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center'}}>
+            <Image source={require('../../Image/course.png')} 
+              style={stylesSidebar.imageiconStyle}
+              />
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('tarmconditionScreenStack')}  >
+                <Text style={stylesSidebar.textStyle}>Terms & Condition</Text>
               </TouchableOpacity>
             </View>
 
-
-
-
-        {/* <DrawerItemList {...props} />
-        <DrawerItem
-          label={({color}) => 
-            <Text style={{color: '#d8d8d8',fontSize:20,fontWeight:"100"}}>
-              Logout
-            </Text>
-          }
-          onPress={() => {
-            props.navigation.toggleDrawer();
-            Alert.alert(
-              'Logout',
-              'Are you sure? You want to logout?',
-              [
-                {
-                  text: 'Cancel',
-                  onPress: () => {
-                    return null;
-                  },
-                },
-                {
-                  text: 'Confirm',
-                  onPress: () => {
-                    AsyncStorage.clear();
-                    props.navigation.replace('Auth');
-                  },
-                },
-              ],
-              {cancelable: false},
-            );
-          }}
-        /> */}
+            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+            <MaterialCommunityIcons name="logout" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
+              <TouchableOpacity
+              onPress={()=>logouts('')}  >
+                <Text style={stylesSidebar.textStyle}>LogOut</Text>
+              </TouchableOpacity>
+            </View>
       </DrawerContentScrollView>
     </View>
   );
@@ -218,29 +206,22 @@ const stylesSidebar = StyleSheet.create({
     backgroundColor: '#e2e2e2',
    // marginTop: 15,
   },
-  buttonTextStyle: {
-    color: '#FFFFFF',
-    paddingVertical: 10,
-    fontSize: 16,
+  imageiconStyle: {
+    marginTop:14,
+    marginLeft:13,
+    width:20,
+    height:20,
   },     
-    buttonStyle: {
-    backgroundColor: '#307ecc',
-    borderWidth: 0,
-    color: '#FFFFFF',
-    borderColor: '#307ecc',
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop:10,
-  },
+  iconStyle: {
+    marginTop:14,
+  
+   },
   textStyle:{
     color: '#000000',
     fontSize:16,
     fontWeight:"400",
     marginLeft:20,
-    marginTop:20,
+    marginTop:14,
     fontFamily:"notoserif"
   },
 });

@@ -10,7 +10,7 @@ const CourseScreen = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-console.log(data)
+console.log("All Course ===",data)
   useEffect(() => {
     fetch('http://tcmeducation.in/api/category')
       .then((response) => response.json())
@@ -38,9 +38,10 @@ console.log(data)
             <CustomCard 
               // heding="UPCOMING BATCHES"
               title={item.id}
+              // id={item.id}
               upcomingb={item.name}
               imageSource={item.image}
-              onPressDetails={()=>navigation.navigate('ViewSubCourse',{id:item.id})} />
+              onPressDetails={()=>navigation.navigate('ViewCourseDetale',{id:item.id})} />
               )}
         />
       </View>

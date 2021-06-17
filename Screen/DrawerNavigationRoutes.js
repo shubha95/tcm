@@ -120,7 +120,7 @@ const homeScreenStack = ({navigation}) => {
         name="ViewSubCourse"
         component={SubCourse}
         options={{
-          title: 'Related Course Detail', //Set Header Title
+          title: 'Related Course Details', //Set Header Title
           headerStyle: {
             backgroundColor: '#00A0E3', //Set Header color
           },

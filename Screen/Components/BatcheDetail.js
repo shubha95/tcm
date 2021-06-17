@@ -12,6 +12,7 @@ const SubCourse = (props) => {
   console.log("Baches Detele id == ",props.route.params.id);
   const navigation = useNavigation();
   const [BachesDetaile, setBaches] = useState([]); 
+  console.log("Baches Detele Text response == ",BachesDetaile);
   const [loading, setLoading] = useState(false);
   const Bachdetails = ()=>{
     setLoading(true);
@@ -44,13 +45,12 @@ const text =
     <SafeAreaView>
     <ScrollView>
     <Loader loading={loading} />
+    <Text style={styles.textstyle}>{BachesDetaile.name}</Text>
       <Image  style={styles.tinyLogo}
         source={{uri:BachesDetaile.image}}
       />
-      <Text style={styles.textstyle}>{BachesDetaile.name}</Text>
       <HTMLView
              value={details}
-              // value={BachesDetaile.detail} 
               style={styles.htmtext}
           />
           <TouchableOpacity  style={styles.buttonStyle} onPress={async()=>{

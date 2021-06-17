@@ -22,6 +22,7 @@ const CourseDetails = (props) => {
      .then((response) =>{return response.json()}  )
     .then((json) =>{setData(json);
       console.log("my Course Id === ",json.id);
+      console.log("my Course Detale === ",json);
       fetch('http://tcmeducation.in/api/subcategoryapi/'+json.id,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -53,13 +54,13 @@ const CourseDetails = (props) => {
       <Image  style={styles.tinyLogo}
         source={{uri:data.image}}
       /> 
-        
-     <View style={styles.htmlStyle}>
+         
           <HTMLView
               value={data.detail}
-              style={{ marginLeft: 15,marginRight:10,  fontWeight: '300', textAlign:"justify",}}
+              stylesheet={styless}
+               
           />
-      </View>
+    
       {/* <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>{data.detail}</Text> */}
       <Text style={styles.subhading}>{data.name} RELATED COURSES</Text>
       <View >
@@ -85,17 +86,28 @@ const CourseDetails = (props) => {
 };
 
 export default CourseDetails;
+const styless = StyleSheet.create({
+  p: {
+    marginLeft: 20,
+    marginRight:30,  
+   // fontWeight: '100',
+     textAlign:"justify",
+     lineHeight: 23,
+     fontSize:16,
+    //fontWeight: '300',
+    //color: '#FF3366', // make links coloured pink
+  },
+});
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff', 
-        fontSize: 18,
+        fontSize: 18, 
     },
     textstyle:{
       marginTop:10,
        textAlign: 'center', 
        fontSize:25, 
        fontWeight: 'bold',
-    
     },
     subhading:{
       // textAlign: 'center', 
