@@ -5,6 +5,7 @@ import Loader from '../Components/Loader';
 import CustomCard from '../Components/CustomCard';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { heightScale, widthScale } from '../utils/helper';
  
 const HomeScreens = () => {
   const navigation = useNavigation();
@@ -141,8 +142,8 @@ buttonStyle: {
   height: 40,
   alignItems: 'center',
   borderRadius: 30,
-  marginLeft: 35,
-  marginRight: 35,
+  marginLeft: widthScale(35),
+  marginRight: heightScale(35),
 },
 heading:{
   marginTop:10,
