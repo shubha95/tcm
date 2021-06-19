@@ -54,16 +54,13 @@ const HomeScreens = () => {
     },[]);
 
   return (
-    <SafeAreaView style={styles.bannerStyle}>
+    <SafeAreaView>
     <Loader loading={loading} />
     <ScrollView >
        <View>
-         <Image  style={styles.tinyLogo}
+         <Image
          source={require('../../Image/banner2.png')}
-         style={{
-          width: 413,
-          justifyContent: 'center',
-        }}
+         style={styles.bannerStyle}
       />
       </View>
           
@@ -112,49 +109,54 @@ const HomeScreens = () => {
 export default HomeScreens;
 
 const styles = StyleSheet.create({
-  container: {
-      backgroundColor: '#fff',
-      justifyContent: 'center',
-      paddingTop:20,
-  },
-  paragraph: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    paddingLeft:20,
-    color: '#34495e',
-  },
- 
-  buttonContainer: {  
-    margin: 20,
-    borderRadius: 30,
-    
-}, 
-top: {
-  flex: 0.3,
-  backgroundColor: '#307ecc',
-  // borderWidth: 1,
-  borderTopLeftRadius: 20,
-  borderTopRightRadius: 20,
-  borderBottomLeftRadius: 20,
-  borderBottomRightRadius: 20,
-  padding: 80,
-  margin: 20,
-},
-buttonStyle: {
-  backgroundColor: '#307ecc',
-  borderWidth: 0,
-  color: '#FFFFFF',
-  borderColor: '#307ecc',
-  height: 40,
-  alignItems: 'center',
-  borderRadius: 30,
-  marginLeft: widthScale(35),
-  marginRight: heightScale(35),
-},
+  // container: {
+  //     backgroundColor: '#fff',
+  //     justifyContent: 'center',
+  //     paddingTop:20,
+  // },
+  // paragraph: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  //   paddingLeft:20,
+  //   color: '#34495e',
+  // },
+//   buttonContainer: {  
+//     margin: 20,
+//     borderRadius: 30,
+// }, 
+// top: {
+//   flex: 0.3,
+//   backgroundColor: '#307ecc',
+//   // borderWidth: 1,
+//   borderTopLeftRadius: 20,
+//   borderTopRightRadius: 20,
+//   borderBottomLeftRadius: 20,
+//   borderBottomRightRadius: 20,
+//   padding: 80,
+//   margin: 20,
+// },
+// buttonStyle: {
+//   backgroundColor: '#307ecc',
+//   borderWidth: 0,
+//   color: '#FFFFFF',
+//   borderColor: '#307ecc',
+//   height: 40,
+//   alignItems: 'center',
+//   borderRadius: 30,
+//   marginLeft: widthScale(35),
+//   marginRight: heightScale(35),
+// },
 heading:{
+  marginTop: heightScale(10),
   marginTop:10,
   fontSize: 22,
   fontWeight: 'bold',
-  paddingLeft:20,
+  paddingLeft: widthScale(20),
+},
+bannerStyle:{
+  justifyContent: 'center',
+  width: widthScale(410),
+  height:heightScale(140),
+  alignItems: 'center',
 },
 });

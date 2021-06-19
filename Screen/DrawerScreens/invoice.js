@@ -2,6 +2,8 @@ import React ,{useState, useEffect} from 'react';
 import {View , Text, Image ,TouchableOpacity,StyleSheet,SafeAreaView,ScrollView}  from 'react-native';
 import { Card } from 'react-native-elements';
 import Loader from '../Components/Loader';
+import { heightScale, widthScale } from '../utils/helper';
+
 const CustomCard = (props) => {
   console.log("Order id == ",props.route.params.id);
  
@@ -10,8 +12,8 @@ const CustomCard = (props) => {
   const [loading, setLoading] = useState(false);
   const invoiceDetails = ()=>{
     setLoading(true);
-    console.log("url",'http://naukrighar.org/api/invoice'+props.route.params.id)
-    fetch('http://naukrighar.org/api/invoice/'+props.route.params.id,{
+    console.log("url",'http://tcmeducation.in/api/invoice/'+props.route.params.id)
+    fetch('http://tcmeducation.in/api/invoice/'+props.route.params.id,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
      })
@@ -30,18 +32,7 @@ const CustomCard = (props) => {
         <SafeAreaView >
         <ScrollView >
         <Loader loading={loading} />
-        <Card  >
-        {/*react-native-elements Card*/}
-            {/* <View>
-              <Image
-                source={require('../../Image/tcm-logo.png')}
-                  style={{
-                  width: '100%',
-                  height: 100,
-                  justifyContent: 'center',
-                }}
-              />
-            </View> */}
+      <Card  >
         <Text style={styles.paragraph}> Enroll Date : {invoiceDetail.enrolldate}</Text>
         <Text style={styles.paragraph}>To: {invoiceDetail.to}</Text>
         <Text style={styles.paragraph}> Email : {invoiceDetail.toemail} </Text>
@@ -52,19 +43,8 @@ const CustomCard = (props) => {
         <Text style={styles.paragraph}>Email : {invoiceDetail.email} </Text>
         <Text style={styles.paragraph}>Address: {invoiceDetail.address}</Text>
         <Text style={styles.paragraph}>Phone : {invoiceDetail.phone}</Text>
-
-        {/* <Text style={styles.paragraph}>Transaction ID: 898989XXXXXX89</Text>
-        <Text style={styles.paragraph}>PaymentMode: Admin Enroll</Text>
-        <Text style={styles.paragraph}>Currency: USD</Text>
-        <Text style={styles.paragraph}>Payment Status: Recieved </Text> */}
         <Text style={styles.paragraph}>Enroll On: {invoiceDetail.enrollon}</Text>
         <Text style={styles.paragraph}>Total Price : {invoiceDetail.totalpay}</Text>
-        {/* <TouchableOpacity
-            // onPress={()=>props.onPressDetails()}
-            style={styles.buttonStyle}
-            >
-            <Text style={styles.buttonTextStyle}>Download</Text>
-          </TouchableOpacity> */}
       </Card>
       
      </ScrollView>

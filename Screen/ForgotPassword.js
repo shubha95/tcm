@@ -52,7 +52,7 @@
       Setotp(responseJson.data.otp);
       setUserId(responseJson.data.userid);
      }else{
-      alert("Plesse Chek Email Id This Email Id Not Register");
+      alert("Please check! This Email Id is not registered");
      }
         
        })
@@ -128,7 +128,7 @@
                     </View>
                  {conformpass ? (  
                      <View>  
-                         <Text style={styles.para}>Check Your  Email Id And Enter 4 Degit Otp</Text>             
+                         <Text style={styles.para}>Check Your  Email Id And Enter 4 Digit Otp</Text>             
                         <View style={styles.SectionStyle}>
                         <TextInput
                         style={styles.inputStyle}

@@ -10,6 +10,7 @@ import Loader from '../Components/Loader';
 import HTMLView from 'react-native-htmlview';
 import { Card } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { heightScale, widthScale } from '../utils/helper';
 const SubCourse = (props) => {
   console.log("Course Detele id == ",props.route.params.id);
   const navigation = useNavigation();
@@ -48,9 +49,7 @@ const SubCourse = (props) => {
 
   
   useEffect(()=>{
- 
     SubCoursedetales();
-    
   },[]);
   
  console.log("Course Detae id ==", SubCourseDetele);
@@ -61,12 +60,12 @@ const SubCourse = (props) => {
   return (
     <SafeAreaView>
     <ScrollView>
-    <Loader loading={loading} />
+    <Loader loading={loading} />  
     <Text style={styles.textstyle}>{SubCourseDetele.name}</Text>
       <Image  style={styles.tinyLogo}
         source={{uri:SubCourseDetele.image}}
-      />
-      <View style={{marginLeft:10, marginLeft:30,textAlign:"justify",}}>
+      /> 
+      <View style={{marginLeft:widthScale(30),textAlign:"justify",}}>
       <HTMLView
               value= {details} 
               stylesheet={styless}
@@ -74,20 +73,11 @@ const SubCourse = (props) => {
       </View>
       <View>
       {edited ? (
-      <Text style={{ marginLeft: 15,marginRight:10, fontSize:20}}>{SubCourseDetele.name} Related baches</Text>,
-        <Card style={{marginBottom:50}}>
-  {/* <Card.Title>{relatedbach.data.name}</Card.Title> */}
-   
-  <Card.Image  source={{uri:relatedbach.data.image}}
-          style={{
-                  width: 345,
-                  height: 200,
-                  justifyContent: 'center',
-                  marginRight: 45,
-                }}
-  >
-    <Text> </Text>
-   
+      <Text style={styles.rbhedingStyle}>{SubCourseDetele.name} Related baches</Text>,
+        <Card style={{marginBottom:50}}>   
+  <Card.Image  
+          source={{uri:relatedbach.data.image}}
+          style={styles.bachimageStyle}>
   </Card.Image>
   <TouchableOpacity
             onPress={()=>navigation.navigate('ViewUpcomingBatch',{id:relatedbach.data.id})} 
@@ -100,8 +90,6 @@ const SubCourse = (props) => {
  
  
     </View>
-
-
     </ScrollView>
     </SafeAreaView>
   );
@@ -110,14 +98,9 @@ const SubCourse = (props) => {
 export default SubCourse;
 const styless = StyleSheet.create({
   p:{
-    // marginLeft: 28,marginRight:10, marginTop:10, fontWeight:'bold',fontSize:30,
-   
-   // fontWeight: '100',
      textAlign:"justify",
      lineHeight: 23,
      fontSize:16,
-    //fontWeight: '300',
-    //color: '#FF3366', // make links coloured pink
   },
 });
 const styles = StyleSheet.create({
@@ -135,36 +118,46 @@ const styles = StyleSheet.create({
     subhading:{
       // textAlign: 'center', 
       fontSize:18 ,
-      marginTop:10,
-      fontWeight: 'bold',
-      marginLeft: 15,
-      marginRight:10
-   
+      marginTop:heightScale(10),
+      fontWeight: 'bold', 
+      marginLeft: widthScale(15),
+      marginRight: widthScale(10),
    },
-    tinyLogo: {
-      width: 345,
-      height: 200,
-      justifyContent: 'center',
-      marginTop:20,
-     marginLeft: 30, 
-     marginBottom:15,
-    },
+   tinyLogo: {
+    width: widthScale(345),
+    height:heightScale(200),
+    justifyContent: 'center',
+   marginBottom: heightScale(15),
+   marginLeft: widthScale(30),
+   marginTop: heightScale(20),
+  },
+ 
     buttonStyle: {
       backgroundColor: '#307ecc',
       borderWidth: 0,
       color: '#FFFFFF',
-      borderColor: '#307ecc',
-      height: 40,
+      borderColor: '#307ecc', 
+      height:heightScale(40),
       alignItems: 'center',
       borderRadius: 30,
-      marginLeft: 35,
-      marginRight: 35,
-      marginTop:10,
+      marginLeft: widthScale(35),
+      marginRight: widthScale(35),
+      marginTop:heightScale(10),
     },
     buttonTextStyle: {
       color: '#FFFFFF',
       paddingVertical: 10,
       fontSize: 16,
     },
-  
+  rbhedingStyle:{
+    marginLeft: widthScale(15),
+    marginRight: widthScale(15),
+    fontSize:20
+  },
+  bachimageStyle:{
+    width: widthScale(345),
+    height:heightScale(240),
+      justifyContent: 'center', 
+      marginRight: widthScale(45),
+  }
   });

@@ -6,6 +6,7 @@
  import { useNavigation } from '@react-navigation/native';
  import Loader from '../Components/Loader';
  import AsyncStorage from '@react-native-async-storage/async-storage';
+ import { heightScale, widthScale } from '../utils/helper';
  const PurchaseHistory= () => {
    const navigation = useNavigation();
   
@@ -69,10 +70,10 @@
        paddingTop:10,
    },
    paragraph: {
-   
+    paddingLeft: widthScale(20),
      fontSize: 18,
      fontWeight: 'bold',
-     paddingLeft:20,
+    //  paddingLeft:20,
      color: '#34495e',
    },
  });

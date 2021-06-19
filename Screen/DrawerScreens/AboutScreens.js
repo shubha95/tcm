@@ -3,7 +3,7 @@ import React ,{useState, useEffect} from 'react';
 import {View, Text, SafeAreaView,StyleSheet, Image, Dimensions } from 'react-native';
 import Carousel from 'react-native-banner-carousel';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import { heightScale, widthScale } from '../utils/helper';
 const AboutScreens = () => {
 
  
@@ -55,17 +55,32 @@ const styles = StyleSheet.create({
      fontWeight: 'bold',
   },
   tinyLogo: {
+   width: widthScale(345),
+    height:heightScale(400),
+    marginLeft: widthScale(50),
+    marginTop: heightScale(15),
+
+
     justifyContent: 'center',
-    marginTop:15,
-   marginLeft: 50,
-   borderRadius: 450 / 2,  
+  //   marginTop:15,
+  //  marginLeft: 50,
+   borderRadius: 500 / 2,  
   },
   aboutimage: {
-    width: 345,
-    height: 350,
-    justifyContent: 'center',
-    marginTop:10,
-   marginLeft: 20, 
+    width: widthScale(345),
+    height:heightScale(350),
+    marginLeft: widthScale(20),
+    marginTop: heightScale(10),
+    fontWeight: 'bold',
+    alignItems: 'center',
+
+
+
+  //   width: 345,
+  //   height: 350,
+   
+  //   marginTop:10,
+  //  marginLeft: 20, 
   },
   textStyle:{
      marginLeft: 22,

@@ -26,6 +26,7 @@ import TarmcCondition from './DrawerScreens/tarmccondition';
 import privacypolicy from './DrawerScreens/privacypolicy';
 import JoinClass from './JoinClass';
 import PayNowDetails from './DrawerScreens/PayNowDetails';
+import Mycoursedetale from './Components/Mycoursedetale';
 
 
 const Stack = createStackNavigator();
@@ -145,22 +146,6 @@ const homeScreenStack = ({navigation}) => {
           },
         }}
       />
-      {/* <Stack.Screen
-        name="PurchaseHistory"
-        component={PurchaseHistory}
-        options={{
-          title: 'Purchase History', //Set Header Title
-          headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
-          },
-          headerTintColor: '#fff', //Set Header text color
-          headerTitleStyle: {
-            fontWeight: 'bold', //Set Header text style
-          },
-        }}
-      /> */}
-
-
     </Stack.Navigator>
   );
 };
@@ -367,10 +352,10 @@ const mycoursesScreenStack = ({navigation}) => {
         }}
       />
       <Stack.Screen
-        name="ViewUpcomingBatchs"
-        component={BatcheDetail}
+        name="Viewmycoursedetale"
+        component={Mycoursedetale}
         options={{
-          title: 'Batches Detail', //Set Header Title
+          title: 'Course Details', //Set Header Title
           headerStyle: {
             backgroundColor: '#00A0E3', //Set Header color
           },

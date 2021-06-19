@@ -3,12 +3,11 @@ import React, {useState, createRef} from 'react';
 import { StyleSheet, Select,TextInput,  View, Text, Image, KeyboardAvoidingView, Keyboard, TouchableOpacity,    ScrollView,
 } from 'react-native';
 import Loader from './Components/Loader';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-// import SelectBox from 'react-native-multi-selectbox'
-// import { xorBy } from 'lodash';
+import { useNavigation } from '@react-navigation/native';
 
 
 const UpdatePassword = (props) => {
+  const navigation = useNavigation();
     console.log("Course Detele id == ",props.route.params.userEmail);
     console.log("Course Detele id == ",props.route.params.userId);
   let useremil = props.route.params.userEmail;
@@ -56,7 +55,7 @@ const UpdatePassword = (props) => {
       if(responseJson.Status=="true"){
         console.log(responseJson.data.token);
         setIsRegistraionSuccess(true);
-        // navigation.navigate('DrawerNavigationRoutes');
+         navigation.navigate('login');
       }
       else{
         alert(responseJson.error);

@@ -8,6 +8,7 @@ import CustomCard from '../Components/CustomCard';
 import { useNavigation } from '@react-navigation/native';
 import Loader from '../Components/Loader';
 import HTMLView from 'react-native-htmlview';
+import { heightScale, widthScale } from '../utils/helper';
 const CourseDetails = (props) => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
@@ -39,9 +40,7 @@ const CourseDetails = (props) => {
 
   useEffect(()=>{
     Coursedetale();
-    // Courserelatedexam();
   },[]);
-  // console.log("course detele",data);
   
   console.log("course related exam detele ",relatedexam);
   return (
@@ -50,15 +49,13 @@ const CourseDetails = (props) => {
     
     <ScrollView>
     <Loader loading={loading} />
-    <Text style={styles.textstyle}>{data.name}</Text>
-      <Image  style={styles.tinyLogo}
+    <Text style={styles.coursenameStyle}>{data.name}</Text>
+      <Image  style={styles.courseimageStyle}
         source={{uri:data.image}}
-      /> 
-         
+      />
           <HTMLView
               value={data.detail}
               stylesheet={styless}
-               
           />
     
       {/* <Text style={{ marginLeft: 15,marginRight:10,fontSize: 18, }}>{data.detail}</Text> */}
@@ -88,14 +85,11 @@ const CourseDetails = (props) => {
 export default CourseDetails;
 const styless = StyleSheet.create({
   p: {
-    marginLeft: 20,
-    marginRight:30,  
-   // fontWeight: '100',
+    marginLeft: widthScale(20),
+    marginRight: heightScale(30), 
      textAlign:"justify",
      lineHeight: 23,
      fontSize:16,
-    //fontWeight: '300',
-    //color: '#FF3366', // make links coloured pink
   },
 });
 const styles = StyleSheet.create({
@@ -103,37 +97,26 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff', 
         fontSize: 18, 
     },
-    textstyle:{
-      marginTop:10,
+    coursenameStyle:{
+      marginTop: heightScale(10), 
        textAlign: 'center', 
        fontSize:25, 
        fontWeight: 'bold',
     },
     subhading:{
-      // textAlign: 'center', 
+      marginRight: widthScale(10),
+      marginLeft: widthScale(15),
       fontSize:18 ,
       marginTop:10,
       fontWeight: 'bold',
-      marginLeft: 15,
-      marginRight:10
-   
    },
-    tinyLogo: {
-      width: 345,
-      height: 230,
+   courseimageStyle: {
+      width: widthScale(345),
+      height:heightScale(230),
       justifyContent: 'center',
-      marginTop:10,
-     marginLeft: 20, 
-     marginBottom:10,
+      textAlign: 'center', 
+     marginBottom: heightScale(10),
+     marginLeft: widthScale(29),
+     marginTop: heightScale(10),
     },
-    htmlStyle:{
-      marginLeft: 10,
-      marginRight:20,
-      fontSize: 16,
-      fontWeight: '800',
-      marginTop:10,
-      //fontFamily:"Lato",
-      textAlign:"justify",
-     // lineHeight:3.5,
-   }
   });

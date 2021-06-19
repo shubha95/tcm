@@ -5,6 +5,7 @@ import CustomCard from '../Components/CustomCard';
 import Loader from '../Components/Loader';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { heightScale, widthScale } from '../utils/helper';
 const MyCourses = () => {
     
     const navigation = useNavigation();
@@ -36,10 +37,8 @@ const MyCourses = () => {
 
        <View>
    
-    <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
-        {/* <Text style={{ fontSize: 18, color: 'green', textAlign: 'center'}}>{data.id}</Text>
-        <Text style={{ fontSize: 14, color: 'green', textAlign: 'center', paddingBottom: 10}}>Articles:</Text> */}
-        
+    <View style={{ flex: 1, flexDirection: 'column', justifyContent:'space-between'}}>
+
       {edited ? (
         <FlatList
           data={mycourse.data}
@@ -50,10 +49,10 @@ const MyCourses = () => {
               title={item.id}
               upcomingb={item.name}
               imageSource={item.image}
-              onPressDetails={()=>navigation.navigate('ViewUpcomingBatchs',{id:item.id})} />
+              onPressDetails={()=>navigation.navigate('Viewmycoursedetale',{id:item.id})} />
               )}
         />
-        ) : (<Text>No Courses </Text> )}
+        ) : (<Text style={styles.paragraph}>No Course</Text> )}
       </View>
     
   </View>

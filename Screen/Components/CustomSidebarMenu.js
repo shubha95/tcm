@@ -14,14 +14,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import Entypo  from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
- 
+import { heightScale, widthScale } from '../utils/helper';
 
 const CustomSidebarMenu = (props) => {
 
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [userdetale , setuserdetale] = useState([]);
-  console.log("User Detele Profile",userdetale);
+  //console.log("User Detele Profile custem side bar",userdetale);
+  let image = userdetale.file_name !== null ? {uri:userdetale.file_name} : require('../../Image/userProfile.png');
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
     // valueParsed = setUser(valueParsed);
@@ -68,8 +69,8 @@ const CustomSidebarMenu = (props) => {
         <View style={stylesSidebar.profileHeaderPicCircle}>
           <Text style={{fontSize:25, color: '#307ecc'}}> </Text>
           <Image
-              source={require('../../Image/tcm-logo.png')}
-              style={{width: '100%', resizeMode: 'contain', marginBottom: 20}}
+              source={image}
+              style={stylesSidebar.profileimageStyle}
             />
         </View>
         <Text style={stylesSidebar.profileHeaderText}>
@@ -139,13 +140,25 @@ const CustomSidebarMenu = (props) => {
                 <Text style={stylesSidebar.textStyle}>About TCM Education</Text>
               </TouchableOpacity>
             </View>
-            <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+            {/* <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
               <Entypo name="info-with-circle" size={20} color='#000000' style={stylesSidebar.iconStyle}/>
               <TouchableOpacity
                 onPress={()=>navigation.navigate('privacypolicyScreenStack')}  >
                 <Text style={stylesSidebar.textStyle}>PRIVACY POLICY</Text>
               </TouchableOpacity>
+            </View> */}
+
+            <View style={{flexDirection:'row',alignItems:'center'}}>
+            <Image source={require('../../Image/course.png')} 
+              style={stylesSidebar.imageiconStyle}
+              />
+              <TouchableOpacity
+                onPress={()=>navigation.navigate('privacypolicyScreenStack')}  >
+                <Text style={stylesSidebar.textStyle}>PRIVACY POLICY</Text>
+              </TouchableOpacity>
             </View>
+
+
             <View style={{flexDirection:'row',alignItems:'center'}}>
             <Image source={require('../../Image/course.png')} 
               style={stylesSidebar.imageiconStyle}
@@ -188,8 +201,8 @@ const stylesSidebar = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 60 / 2,
-    color: 'white',
-    backgroundColor: '#ffffff',
+    color: '#00A0E3',
+    backgroundColor: '#00A0E3',
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -222,6 +235,12 @@ const stylesSidebar = StyleSheet.create({
     fontWeight:"400",
     marginLeft:20,
     marginTop:14,
-    fontFamily:"notoserif"
+    fontFamily:"notoserif",
+  },
+  profileimageStyle:{
+    marginBottom:heightScale(20),
+    width: widthScale(70),
+    resizeMode: 'contain',
+    borderRadius: 450 / 2,
   },
 });

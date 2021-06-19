@@ -4,16 +4,15 @@ import {View, Text, SafeAreaView,StyleSheet, Image,TextInput} from 'react-native
 import { ScrollView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loader from '../Components/Loader';
-
+import { heightScale, widthScale } from '../utils/helper';
 const ProfileScreens = () => { 
   const [loading, setLoading] = useState(false);
   const [userdetale , setuserdetale] = useState([]);
-  console.log("User Detele Profile",userdetale);
+  let image = userdetale.file_name !== null ? {uri:userdetale.file_name} : require('../../Image/userProfile.png');
+ // console.log("User Detele Profile",userdetale);
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
-    // valueParsed = setUser(valueParsed);
     console.log("Url",'http://tcmeducation.in/api/myprofile/'+valueParsed);
-
     fetch('http://tcmeducation.in/api/myprofile/'+valueParsed,{
       method: 'GET',
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -30,7 +29,7 @@ const ProfileScreens = () => {
     <SafeAreaView>
     <ScrollView>
     <Loader loading={loading} />
-       <Image  style={styles.tinyLogo} source={require('../../Image/userProfile.png')} />
+       <Image  style={styles.tinyLogo} source={image} />
        <Text style={styles.textstyle}>{userdetale.name}</Text>
        <View style={{marginTop:30,paddingLeft: 15,paddingRight: 15}}>
        <TextInput style = {styles.inputStyle}
@@ -74,11 +73,11 @@ const styles = StyleSheet.create({
      fontWeight: 'bold',
   },
   tinyLogo: {
-    width:300,
-    height:300,
+    width: widthScale(300),
+    height:heightScale(300),
     justifyContent: 'center',
-    marginTop:10,
-   marginLeft: 50,
+    marginTop: widthScale(10),
+    marginLeft:heightScale(50),
    borderRadius: 450 / 2,  
   },
   mainBody: {
@@ -88,20 +87,21 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   inputStyle: {
+    marginBottom:heightScale(10),
     borderWidth: 1,
-    marginBottom:10,
     flex: 1,
     color: '#141715',
-    paddingLeft: 15,
-    paddingRight: 15,
+    //marginTop: widthScale(15),
     fontWeight: 'bold',
     fontSize: 20,
     borderRadius: 30,
     borderColor: '#000000',
+    
   },
   placStyle:{
-    marginLeft:20,marginRight:20
-    ,marginTop:30
+    marginLeft: widthScale(20),
+    marginRight:widthScale(20),
+    marginTop:heightScale(30),
   }
  
    });

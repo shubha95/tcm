@@ -12,7 +12,6 @@ import SplashScreen from './Screen/SplashScreen';
 import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
-// import { Permission } from './Screen/AppPermission';
 import forgotpassword from './Screen/ForgotPassword';
 import updatepassword from './Screen/UpdatePassword';
 

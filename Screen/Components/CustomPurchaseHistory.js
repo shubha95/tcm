@@ -1,6 +1,7 @@
 import React from 'react';
 import {View , Text,SafeAreaView,ScrollView, Image ,TouchableOpacity,StyleSheet}  from 'react-native';
 import { Card } from 'react-native-elements';
+import { heightScale, widthScale } from '../utils/helper';
 
 const CustomPurchasHistory = (props) => {
     return (
@@ -12,15 +13,11 @@ const CustomPurchasHistory = (props) => {
           <View >
               <Image
                 source={props.imageSource}
-                  style={{
-                  width: '100%',
-                  height: 100,
-                  justifyContent: 'center',
-                }}
+                style={styles.purchimageStyle}
               />
             </View>
             {/*react-native-elements Card*/}
-            <Text style={styles.paragraph}>Name - {props.name}</Text>
+            <Text style={styles.paragraph}>{props.name}</Text>
             <Text style={styles.paragraph}>Enroll On - {props.enroll}</Text>
             <Text style={styles.paragraph}>Payment Mode - {props.Paymentmathod }</Text>
             <Text style={styles.paragraph}>Total Price - {props.totalprice }</Text>
@@ -46,7 +43,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#ecf0f1',
     },
     paragraph: {
-      marginTop:10,
+      marginTop:heightScale(10),
       fontSize: 18,
       fontWeight: 'bold',
       // textAlign: 'center',
@@ -70,6 +67,14 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         paddingVertical: 10,
         fontSize: 16,
+      },
+    
+    
+      purchimageStyle: {
+
+        width: widthScale(350),
+        height:heightScale(350),
+        justifyContent: 'center',
       },
   });
 

@@ -1,8 +1,6 @@
 // Import React and Component
 import React, {useState, useEffect} from 'react';
 import { ActivityIndicator, View, StyleSheet,  Image} from 'react-native';
-
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,13 +10,7 @@ const SplashScreen = ({navigation}) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setAnimating(false);
-
-    
-      //Check if user_id is set or not
-      //If not then send for Authentication
-      //else send to Home Screen
-     
+      setAnimating(false);     
       AsyncStorage.getItem('token').then((value) =>
         navigation.replace(
           value === null ? 'Auth' : 'DrawerNavigationRoutes'
