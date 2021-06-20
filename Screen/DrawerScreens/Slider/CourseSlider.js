@@ -1,4 +1,4 @@
-// Import React and Component
+  // Import React and Component
 import React ,{useState, useEffect} from 'react';
 import {View, Text, SafeAreaView,StyleSheet, Image, Dimensions,TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-banner-carousel';
@@ -16,9 +16,9 @@ const CustomSlider = (props) => {
     const BannerHeight = 200;
     const BannerWidth =  Dimensions.get('window').width;
     const images = [
-      require("../../../Image/CAT.png"),
-      require("../../../Image/CLAT.png"),
-      require("../../../Image/IPM.png"),
+      require("../../../Image/userProfile.png"),
+      require("../../../Image/userProfile.png"),
+      require("../../../Image/userProfile.png"),
   ];
  
 

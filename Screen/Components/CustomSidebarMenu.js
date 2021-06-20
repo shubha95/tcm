@@ -9,8 +9,6 @@ import {
 } from '@react-navigation/drawer';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import AsyncStorage from '@react-native-community/async-storage';
-
 import { useNavigation } from '@react-navigation/native';
 import Entypo  from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,8 +19,10 @@ const CustomSidebarMenu = (props) => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [userdetale , setuserdetale] = useState([]);
-  //console.log("User Detele Profile custem side bar",userdetale);
-  let image = userdetale.file_name !== null ? {uri:userdetale.file_name} : require('../../Image/userProfile.png');
+  console.log("User Detele Profile custem side bar",userdetale);
+  let imagepath = userdetale.image_path+userdetale.file_name;
+  console.log(imagepath);
+  let image = userdetale.file_name !== null ? {uri:imagepath} : require('../../Image/userProfile.png');
   const getValuesFromStorage = async () => {
     let valueParsed   =  await AsyncStorage.getItem('token');
     // valueParsed = setUser(valueParsed);

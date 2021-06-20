@@ -19,15 +19,14 @@ const LiveClass = () => {
   const [user , setUser] = useState([]);
   const [animating, setAnimating] = useState(true);
 
-
    console.log("valueParsed Home Screen",user);
   const getValuesFromStorage = async () => {
-
      //requestCameraPermission();
-     
-     
       let valueParsed   =  await AsyncStorage.getItem('token');
-
+      // let username   =  await AsyncStorage.getItem('usernames');
+      // username=username.replace(/\s+/g, '');
+      // console.log("User Name",username);
+      // setuserName(username);
       fetch('http://tcmeducation.in/api/my-live-classess/'+valueParsed,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -59,65 +58,17 @@ const LiveClass = () => {
       console.log(err);
     }
     return null;
-  }
-
-  // const requestCameraPermission = async () => {
-  //   try {
-  //     const granted = await PermissionsAndroid.requestMultiple(
-  //       [PermissionsAndroid.PERMISSIONS.CAMERA,
-  //       {
-  //         title: "TCM Education  Camera Permission",
-  //         message:
-  //           "TCM Education needs access to your camera " +
-  //           "so you can take video sessions.",
-  //         buttonNegative: "Cancel",
-  //         buttonPositive: "OK"
-  //       }
-  //     );
-  //     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-  //       console.log("You can use the camera");
-  //     } else {
-  //       console.log("Camera permission denied");
-  //     }
-  //   } catch (err) {
-  //     console.warn(err);
-  //   }
-  // };
-
-  // const requestAudioPermission = async () => {
-  //   try {
-  //     const granted = await PermissionsAndroid.request(
-  //       PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-  //       {
-  //         title: "TCM Education Audio Permission",
-  //         message:
-  //           "TCM Education needs access to your audio " +
-  //           "so you can join audo session.",
-  //         buttonNegative: "Cancel",
-  //         buttonPositive: "OK"
-  //       }
-  //     );
-  //     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-  //       console.log("You can use the audio");
-  //     } else {
-  //       console.log("Camera permission denied");
-  //     }
-  //   } catch (err) {
-  //     console.warn(err);
-  //   }
-  // };
-  
-   
+  }  
   useEffect(()=>{ 
        
       getValuesFromStorage();
     },[]);
 
 
-  const onJoinClick  = async(meetingid,user_name,attendeePW,modpw) => {
-
+  const onJoinClick  = async(meetingid,usernames,attendeePW,modpw) => {
+    usernames=usernames.replace(/\s+/g, '');
     let url;
-    url = `${config.serverUrl}api/join?meetingID=${meetingid}&fullName=${'bdjdjd'}&redirect=false&password=${attendeePW}`;
+    url = `${config.serverUrl}api/join?meetingID=${meetingid}&fullName=${usernames}&redirect=false&password=${attendeePW}`;
     url = await encript(url);
     console.log(url,"url--");
    
@@ -139,13 +90,14 @@ const LiveClass = () => {
                 <View >
                 
                 </View>
-                <Text style={styles.paragraph}>Subjact : {item.meetingname} </Text>
+                <Text style={styles.paragraph}>Topic Name : {item.meetingname} </Text>
+                <Text style={styles.paragraph}>By : {item.presen_name} </Text>
                 <Button
                   onPress={()=>{
-                    onJoinClick(item.meetingid,item.presen_name,item.attendeepw,item.modpw)
+                    onJoinClick(item.meetingid,item.username,item.attendeepw,item.modpw)
                   }} 
                     title="Join To Class"
-                    color="#841584"
+                    color="#cf242cd6"
                     accessibilityLabel="Join To Class"
                 />
                 
@@ -169,7 +121,7 @@ export default LiveClass;
 const styles = StyleSheet.create({
  
   paragraph: {
-    margin: 24,
+    margin: 7,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',

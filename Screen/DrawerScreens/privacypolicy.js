@@ -22,6 +22,11 @@
         <Text style={styles.textStyle}>The term "Policy" refers to this Privacy Policy.</Text>
         <Text style={styles.textStyle}>Please read this Policy before using the the chamber of mathematics Platform or submitting any personal information to the chamber of mathematics. This Policy is a part of and incorporated within, and is to be read along with, the Terms of Use tcmeducation.online/terms_condition.</Text>
         <Text style={styles.textStyle}>Please read this Policy before using the the chamber of mathematics Platform or submitting any personal information to the chamber of mathematics. This Policy is a part of and incorporated within, and is to be read along with, the Terms of Use tcmeducation.online/terms_condition.</Text>
+        <Text style={styles.textStyle}> 1.We ask for permission from the user about their personal information (like: name, email, phone number):- To create authentic database of students.</Text>
+        <Text style={styles.textStyle}>2. We ask for permission for microphone:- To record user inputs at the server for providing better services.</Text>
+        <Text style={styles.textStyle}>3.We ask for permission of camera access:- To provide better and improved services. </Text>
+        <Text style={styles.textStyle}>4. We ask for permission of access to storage:- To store some necessary data on their device.</Text>
+        <Text style={styles.textStyle}>5. We ask for permission of data access:- To view network connection and keep you connected to our server.</Text>
      <Text></Text>
      </ScrollView>
      </SafeAreaView>
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
    marginLeft: 20, 
   },
   textStyle:{
-     marginLeft: 22,
+     marginLeft: 28,
      marginRight:20,
      fontSize: 16,
      fontWeight: '800',

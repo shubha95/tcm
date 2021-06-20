@@ -67,7 +67,7 @@ const PayNowDetails = (props) => {
                 description: courseName,
                 image: 'https://i.imgur.com/3g7nmJC.png',
                 currency: 'INR',
-                key: 'rzp_test_vrxxvnknXPzVB7', // Your api key
+                key: 'rzp_live_GtzTnosE9ta7Cu', // Your api key
                 amount: coursePrice * 100,
                 name: 'Course',
                 prefill: {
