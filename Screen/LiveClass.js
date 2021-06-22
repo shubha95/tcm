@@ -18,7 +18,7 @@ const LiveClass = () => {
 
   const [user , setUser] = useState([]);
   const [animating, setAnimating] = useState(true);
-
+  console.log("All Class",animating );
    console.log("valueParsed Home Screen",user);
   const getValuesFromStorage = async () => {
      //requestCameraPermission();
@@ -87,11 +87,11 @@ const LiveClass = () => {
         renderItem={({ item }) => (
             <Card title={item.meetingname}>
                 {/*react-native-elements Card*/}
-                <View >
                 
-                </View>
                 <Text style={styles.paragraph}>Topic Name : {item.meetingname} </Text>
                 <Text style={styles.paragraph}>By : {item.presen_name} </Text>
+                <Text style={styles.paragraph}>At Time : {item.timestatus} </Text>
+             
                 <Button
                   onPress={()=>{
                     onJoinClick(item.meetingid,item.username,item.attendeepw,item.modpw)
@@ -131,6 +131,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 80,
   },
- 
+  // subdetaleImage: {
+  //   width: widthScale(345),
+  //   height:heightScale(230),
+  //   textAlign: 'center', 
+  //  marginLeft: widthScale(35),
+  //  marginTop: heightScale(10),
+  // },
  
 });
