@@ -6,7 +6,9 @@ import axios from 'axios';
 import Loader from './Components/Loader';
 import { useNavigation } from '@react-navigation/native';
 const JoinClass = (props) => {
-
+    useEffect(()=>{
+        getMeeting();
+     },[])
     const navigation = useNavigation();
     const [token , setToken] = useState(null);
     const [loading , setLoading] = useState(true);
@@ -14,18 +16,13 @@ const JoinClass = (props) => {
     // const [loading , setLoading] = useState(true);
     
 
-    useEffect(()=>{
-
-        getMeeting();
-        
-     },[])
+   
  
  
 
     const getMeeting  = async()=>{
 
         try{
-
             let res  =  await axios.get(props.route.params.url);
             console.log("meeting res",res);
             let meetingInfo;
@@ -76,10 +73,7 @@ const JoinClass = (props) => {
                  // If we're loading the current URI, allow it to load
                 
                 if (request.canGoBack == true) return true ;
-                 if(request.url=='http://tcmeducation.in/thanku-live-class'){
-                     alert('shubham')
-                 }
-                navigation.navigate('Liveroom');
+                navigation.navigate('Liveroom',{page:'live'});
                 return true;
                
          
