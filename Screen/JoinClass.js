@@ -62,24 +62,8 @@ const JoinClass = (props) => {
                 console.log("event.nativeEvent.data",event.nativeEvent.data);
                 alert(event.nativeEvent.data);
             }}
-       
             userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
             source={{uri:"https://bbl.anumaandreams.com/html5client/join?sessionToken="+token}}
-            onShouldStartLoadWithRequest={(request) => {
-                // $urlLogout = url('https://bbl.anumaandreams.com/bigbluebutton/api/callback?meetingID='.$meetingid.'&user='.$userid);
- 
-                 console.log("request ",request);
-                 console.log("request url",request.url);
-                 // If we're loading the current URI, allow it to load
-                
-                if (request.canGoBack == true) return true ;
-                navigation.navigate('Liveroom',{page:'live'});
-                return true;
-               
-         
-             }}
-         //  originWhitelist={['https://tcmeducation.in/thanku-live-class'] } 
-            
             />
         </View>
     )

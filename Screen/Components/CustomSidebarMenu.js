@@ -9,7 +9,7 @@ import {
 } from '@react-navigation/drawer';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import Entypo  from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { heightScale, widthScale } from '../utils/helper';
@@ -122,7 +122,15 @@ const CustomSidebarMenu = (props) => {
                 style={stylesSidebar.imageiconStyle}
               />
               <TouchableOpacity
-                onPress={()=>navigation.navigate('Liveroom')}  >
+                onPress={()=>{
+                  props.navigation.dispatch(
+                    CommonActions.reset({
+                        index: 0,
+                        routes: [{ name: 'Liveroom' }],
+                    })
+                );
+                  //navigation.navigate('Liveroom')
+                  }}  >
                 <Text style={stylesSidebar.textStyle}>Live Classes</Text>
               </TouchableOpacity>
             </View>

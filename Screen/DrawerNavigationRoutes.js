@@ -27,6 +27,7 @@ import privacypolicy from './DrawerScreens/privacypolicy';
 import JoinClass from './JoinClass';
 import PayNowDetails from './DrawerScreens/PayNowDetails';
 import Mycoursedetale from './Components/Mycoursedetale';
+import PaymentInvoice from './DrawerScreens/PaymentInvoice';
 
 
 const Stack = createStackNavigator();
@@ -66,6 +67,20 @@ const homeScreenStack = ({navigation}) => {
         component={PayNowDetails}
         options={{
           title: 'Summary', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#00A0E3', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+       <Stack.Screen
+        name="PaymentInvoice"
+        component={PaymentInvoice}
+        options={{
+          title: 'Invoice', //Set Header Title
           headerStyle: {
             backgroundColor: '#00A0E3', //Set Header color
           },

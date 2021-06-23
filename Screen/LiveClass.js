@@ -31,13 +31,20 @@ const LiveClass = () => {
       })
       .then((response) =>{return  response.json() })
       .then((json) => {
+        if(json.success && json.data){
+          console.log(json,"live class response");
+           // console.log(json,"live class");
+            setUser([...json.data]);
+        }
+      
         setAnimating(false)
-       // console.log(json,"live class");
-        setUser([...json.data]);
+      
         GetAllPermissions();
        // requestAudioPermission();
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        setAnimating(false)
+      })
 
 
   }
@@ -75,7 +82,7 @@ const onTimeClick = async(timestatus) =>{
     <SafeAreaView style={styles.bannerStyle}>
     <ScrollView >
        
-    {!animating ? (
+    {!animating  &&  user.length > 0? (
      <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
      <FlatList
         data={user}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {View , Text , TouchableOpacity , StyleSheet, } from 'react-native';
+import {View , Text , TouchableOpacity , StyleSheet, ToastAndroid, } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import Loader from '../Components/Loader';
 import RazorpayCheckout from 'react-native-razorpay';
@@ -67,7 +67,7 @@ const PayNowDetails = (props) => {
                 description: courseName,
                 image: 'https://i.imgur.com/3g7nmJC.png',
                 currency: 'INR',
-                key: 'rzp_live_GtzTnosE9ta7Cu', // Your api key
+                key: 'rzp_test_vtO32KG4Ax4aND', // Your api key
                 amount: coursePrice * 100,
                 name: 'Course',
                 prefill: {
@@ -89,11 +89,20 @@ const PayNowDetails = (props) => {
                 }
                 console.log("params... get ..... code clean",params);
                  let paymemtRes =  await axios.post('http://tcmeducation.in/api/payment-complete',params);
-                console.log("axios payment com",paymemtRes.data);
+                console.log("axios payment com",paymemtRes.data.data);
+                console.log("axios payment com",paymemtRes.data.success);
+                if(paymemtRes.data.success){
+
+                    
+                    ToastAndroid.show("Payment completed successfully!", ToastAndroid.SHORT)
+                    props.navigation.navigate('PaymentInvoice');
+                }
+
               }).catch((error) => {
                 // handle failure
                 console.log(error);
-                alert(`Error: ${error.code} | ${error.description}`);
+                ToastAndroid.show("Payment cancelled !", ToastAndroid.SHORT)
+               // alert(`Error: ${error.code} | ${error.description}`);
               });
            
         }catch(error){
