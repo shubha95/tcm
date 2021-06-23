@@ -19,7 +19,6 @@ const LiveClass = () => {
   const [user , setUser] = useState([]);
   const [animating, setAnimating] = useState(true);
 
-   console.log("valueParsed Home Screen",user);
   const getValuesFromStorage = async () => {
      //requestCameraPermission();
       let valueParsed   =  await AsyncStorage.getItem('token');
@@ -34,7 +33,7 @@ const LiveClass = () => {
       .then((response) =>{return  response.json() })
       .then((json) => {
         setAnimating(false)
-        console.log(json,"live class");
+        console.log(json,"live classess");
         setUser([...json.data]);
         GetAllPermissions();
        // requestAudioPermission();
