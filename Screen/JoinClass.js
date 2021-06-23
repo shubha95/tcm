@@ -4,25 +4,25 @@ import WebView from 'react-native-webview';
 import fxp from 'fast-xml-parser';
 import axios from 'axios';
 import Loader from './Components/Loader';
-
+import { useNavigation } from '@react-navigation/native';
 const JoinClass = (props) => {
-
-
+    useEffect(()=>{
+        getMeeting();
+     },[])
+    const navigation = useNavigation();
     const [token , setToken] = useState(null);
     const [loading , setLoading] = useState(true);
+    // const [token , setToken] = useState(null);
+    // const [loading , setLoading] = useState(true);
+    
 
-    useEffect(()=>{
-
-        getMeeting();
-        
-     },[])
+   
  
  
 
     const getMeeting  = async()=>{
 
         try{
-
             let res  =  await axios.get(props.route.params.url);
             console.log("meeting res",res);
             let meetingInfo;
@@ -49,7 +49,7 @@ const JoinClass = (props) => {
     return(
         <View style={{flex:1}}>
             <Loader loading={loading} />
-            <WebView
+        <WebView
             originWhitelist={['*']}
             javaScriptEnabled={true}
             domStorageEnabled={true}
@@ -58,16 +58,28 @@ const JoinClass = (props) => {
             allowUniversalAccessFromFileURLs={true}
             allowsInlineMediaPlayback={true}
             onMessage={event => {
+                // url('/bigblue/api/callback?meetingID='.$meetingid.'&user='.$userid);
                 console.log("event.nativeEvent.data",event.nativeEvent.data);
                 alert(event.nativeEvent.data);
             }}
-            onShouldStartLoadWithRequest={(request) => {
-                console.log("request url",request.url);
-                // If we're loading the current URI, allow it to load
-                if (request.url === 'http://tcmeducation.in/') return false;
-            }}
+       
             userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
             source={{uri:"https://bbl.anumaandreams.com/html5client/join?sessionToken="+token}}
+            onShouldStartLoadWithRequest={(request) => {
+                // $urlLogout = url('https://bbl.anumaandreams.com/bigbluebutton/api/callback?meetingID='.$meetingid.'&user='.$userid);
+ 
+                 console.log("request ",request);
+                 console.log("request url",request.url);
+                 // If we're loading the current URI, allow it to load
+                
+                if (request.canGoBack == true) return true ;
+                navigation.navigate('Liveroom',{page:'live'});
+                return true;
+               
+         
+             }}
+         //  originWhitelist={['https://tcmeducation.in/thanku-live-class'] } 
+            
             />
         </View>
     )
@@ -75,3 +87,5 @@ const JoinClass = (props) => {
 
 
 export default JoinClass;
+
+ 

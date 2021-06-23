@@ -13,19 +13,18 @@ import fxp from 'fast-xml-parser'
 import Loader from './Components/Loader';
 
 const LiveClass = () => {
+  useEffect(()=>{ 
+    getValuesFromStorage(); 
+  },[]);
   const navigation = useNavigation();
-   
-
   const [user , setUser] = useState([]);
+  console.log("valueParsed Home Screen",user);
   const [animating, setAnimating] = useState(true);
-
+  console.log("All Class",animating );
   const getValuesFromStorage = async () => {
      //requestCameraPermission();
+     setUser('');
       let valueParsed   =  await AsyncStorage.getItem('token');
-      // let username   =  await AsyncStorage.getItem('usernames');
-      // username=username.replace(/\s+/g, '');
-      // console.log("User Name",username);
-      // setuserName(username);
       fetch('http://tcmeducation.in/api/my-live-classess/'+valueParsed,{
         method: 'GET',
        headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -33,7 +32,7 @@ const LiveClass = () => {
       .then((response) =>{return  response.json() })
       .then((json) => {
         setAnimating(false)
-        console.log(json,"live classess");
+       // console.log(json,"live class");
         setUser([...json.data]);
         GetAllPermissions();
        // requestAudioPermission();
@@ -58,11 +57,9 @@ const LiveClass = () => {
     }
     return null;
   }  
-  useEffect(()=>{ 
-       
-      getValuesFromStorage();
-    },[]);
-
+const onTimeClick = async(timestatus) =>{
+  alert(' ')
+} 
 
   const onJoinClick  = async(meetingid,usernames,attendeePW,modpw) => {
     usernames=usernames.replace(/\s+/g, '');
@@ -73,7 +70,7 @@ const LiveClass = () => {
    
     navigation.navigate('JoinClass',{url:url})
   }
-
+ 
   return (
     <SafeAreaView style={styles.bannerStyle}>
     <ScrollView >
@@ -82,23 +79,33 @@ const LiveClass = () => {
      <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
      <FlatList
         data={user}
-        keyExtractor={({meetingID}, index) => 'key'+meetingID}
+        keyExtractor={({id}, index) => id}
+       // keyExtractor={({meetingID}, index) => 'key'+meetingID}
         renderItem={({ item }) => (
             <Card title={item.meetingname}>
                 {/*react-native-elements Card*/}
-                <View >
                 
-                </View>
                 <Text style={styles.paragraph}>Topic Name : {item.meetingname} </Text>
                 <Text style={styles.paragraph}>By : {item.presen_name} </Text>
-                <Button
-                  onPress={()=>{
-                    onJoinClick(item.meetingid,item.username,item.attendeepw,item.modpw)
-                  }} 
-                    title="Join To Class"
-                    color="#cf242cd6"
-                    accessibilityLabel="Join To Class"
-                />
+                <Text style={styles.paragraph}>At Time : {item.timestatus} </Text>
+                {item.classstart ? (   
+                   <Button
+                   onPress={()=>{
+                     onJoinClick(item.meetingid,item.username,item.attendeepw,item.modpw)
+                   }} 
+                     title="Join To Class"
+                     color="#00A0E3"
+                     accessibilityLabel="Join To Class"
+                 />             
+               ) : (    <Button
+                onPress={()=>{
+                  onTimeClick(item.timestatus)
+                }} 
+                  title="Join To Class"
+                  color="#cf242cd6"
+                  accessibilityLabel="Join To Class"
+              />)}
+
                 
                 
             </Card>
@@ -130,6 +137,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 80,
   },
- 
+  // subdetaleImage: {
+  //   width: widthScale(345),
+  //   height:heightScale(230),
+  //   textAlign: 'center', 
+  //  marginLeft: widthScale(35),
+  //  marginTop: heightScale(10),
+  // },
  
 });

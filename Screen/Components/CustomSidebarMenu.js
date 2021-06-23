@@ -20,7 +20,7 @@ const CustomSidebarMenu = (props) => {
   const [loading, setLoading] = useState(false);
   const [userdetale , setuserdetale] = useState([]);
   console.log("User Detele Profile custem side bar",userdetale);
-  let imagepath = userdetale.image_path+userdetale.file_name;
+  const imagepath = userdetale.image_path+userdetale.file_name;
   console.log(imagepath);
   let image = userdetale.file_name !== null ? {uri:imagepath} : require('../../Image/userProfile.png');
   const getValuesFromStorage = async () => {
