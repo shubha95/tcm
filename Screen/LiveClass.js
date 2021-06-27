@@ -65,7 +65,7 @@ const LiveClass = () => {
     return null;
   }  
 const onTimeClick = async(timestatus) =>{
-  alert(' ')
+  alert('class Start Timeing  '+timestatus)
 } 
 
   const onJoinClick  = async(meetingid,usernames,attendeePW,modpw) => {

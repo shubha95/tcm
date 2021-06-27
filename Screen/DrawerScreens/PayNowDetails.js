@@ -16,6 +16,7 @@ const PayNowDetails = (props) => {
     const [customerEmail, setCustomerEmail] = useState('');
     const [customerPhone , setCustomerPhone] = useState('');
     const [loading, setLoading] = useState(true);
+    const [UserDetale, setUserDetale] = useState('');
     
 
     const getApiData = async() =>{
@@ -47,7 +48,6 @@ const PayNowDetails = (props) => {
     const getRazorpayOrderId = async() => {
 
         try{
-
             let json = {
                 "courseid":props.route.params.course_id,
                 "coursename": courseName,
@@ -60,7 +60,8 @@ const PayNowDetails = (props) => {
             }
 
             let response =  await axios.post('http://tcmeducation.in/api/payment-initiate-request',json);
-            console.log("axios",response.data.data);
+            console.log("axios  user Detal",response.data.data);
+            setUserDetale(response.data.data);
             let courseorderid = response.data.data.courseorderid;
             var options = {
                 order_id:response.data.data.orderId,
@@ -95,7 +96,9 @@ const PayNowDetails = (props) => {
 
                     
                     ToastAndroid.show("Payment completed successfully!", ToastAndroid.SHORT)
-                    props.navigation.navigate('PaymentInvoice');
+                     console.log('Payment Complet Response',paymemtRes.data.data);
+    const [UserDetale, setUserDetale] = useState('');
+                    props.navigation.navigate('PaymentInvoice',{paymemtRes:paymemtRes.data.data,User:UserDetale});
                 }
 
               }).catch((error) => {
